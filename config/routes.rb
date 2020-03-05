@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   }
 
 # 機能
-
+  root 'users/home#top'
   namespace :users do
     resources :users
-    get 'home/top'
   end
 
 # ---------------------------------------------------

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :users do
+    get 'home/top'
+  end
   namespace :admins do
     get 'categories/index'
     get 'categories/edit'

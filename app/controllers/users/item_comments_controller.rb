@@ -1,2 +1,2 @@
-class User::ItemCommentsController < ApplicationController
+class Users::ItemCommentsController < ApplicationController
 end

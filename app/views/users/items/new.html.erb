@@ -1,0 +1,45 @@
+<%= javascript_include_tag "user.js" %>
+
+
+<h1>投稿するジャンル/カテゴリーを選択していて下さい</h1>
+
+
+<p>画像</p>
+<%= form_for @item, url: users_items_path do |f| %>
+	<div class="field row">
+		<%= f.label :title %>
+		<%= f.text_field :title, class: "col-xs-12 item_title" %>
+	</div>
+
+	<div class="field row">
+		<div class ="work-image-pre center">
+			<%= attachment_image_tag @item, :item_image, src: "", id:"item_image", size: "300x200", alt:"Image preview", class: "item_prev", fallback: "noimage2.png" %><br>
+		</div>
+
+	    <div class="file-field input-field">
+	    	<div class="btn">
+	        	<span>File</span>
+<!-- 画像フォーム -->
+	        	<%= f.attachment_field :item_image, id:"post_img" %><br>
+	      	</div>
+	    </div>
+	</div>
+
+	<div class="field row">
+		<%= f.label :description %>
+		<%= f.text_area :description, class: "col-xs-12 item_body" %>
+	</div>
+
+	<div class="field row">
+		<%= f.label :category %>
+		<%= f.text_area :category, class: "col-xs-12 item_body" %>
+	</div>
+
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+<% end %>
+<p>音・音楽</p>
+<p>動画</p>
+
+

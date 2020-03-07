@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  # namespace :users do
+  #   get 'items/index'
+  #   get 'items/edit'
+  #   get 'items/new'
+  # end
 # user #
 # ---------------------------------------------------
 
@@ -16,7 +21,9 @@ Rails.application.routes.draw do
   get "home/about" => "users/home#about"
   namespace :users do
     resources :users
+    resources :items
   end
+
 
 # ---------------------------------------------------
 

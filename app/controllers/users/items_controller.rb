@@ -13,6 +13,8 @@ class Users::ItemsController < ApplicationController
   	@item = Item.find(params[:id])
     if @item.user.id != current_user.id
       redirect_to items_path
+  else
+  	redirect_to
     end
   end
 
@@ -21,6 +23,7 @@ class Users::ItemsController < ApplicationController
   end
 
   def create
+
   	@item = Item.new(item_params)
   	@item.user_id = current_user.id
   	if @item.save

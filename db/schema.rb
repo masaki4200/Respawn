@@ -48,13 +48,12 @@ ActiveRecord::Schema.define(version: 2020_03_05_075915) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "genre_name", null: false
-    t.integer "categorie_id", null: false
+    t.integer "category_id", null: false
     t.integer "user_id", null: false
     t.string "title", null: false
     t.string "item_image_id", null: false
-    t.binary "item_sound_id", null: false
-    t.binary "item_video_id", null: false
+    t.binary "item_sound_id"
+    t.binary "item_video_id"
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

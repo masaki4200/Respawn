@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   # namespace :users do
   #   get 'items/index'
   #   get 'items/edit'
@@ -43,15 +44,13 @@ devise_for :admins, controllers: {
   namespace :admins do
     get 'categories/index'
     get 'categories/edit'
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
   end
 
 
 
-  get 'items/show'
-  get 'items/new'
-  get 'items/edit'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/withdraw'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

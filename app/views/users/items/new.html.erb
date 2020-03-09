@@ -3,15 +3,26 @@
 
 <h1>投稿するジャンル/カテゴリーを選択していて下さい</h1>
 
-<%= render 'users/items/genre_list', genres: @genres %>
+<%#= render 'users/items/genre_list', genres: @genres %>
 
 
-<%= render 'users/items/category_list', categories: @categories %>
-
+<%#= render 'users/items/category_list', categories: @categories %>
+ 
+<% if @item.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <p>画像</p>
 <%= form_for @item, url: users_items_path do |f| %>
-
-
+	<div class="field row">
+		<%= f.label :category %>
+		<%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
+	</div>
 
 
 	<div class="field row">

@@ -31,6 +31,9 @@
               <%= link_to "About", home_about_path, class: "col-xs-2 headerNavBtn" %>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "col-xs-3 headerNavBtn" %>
 
+              <!-- 後に削除 -->
+              <%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %>
+
             <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
               <%#<%= link_to "商品一覧", admins_items_path, class: "col-xs-2 headerNavBtn admin_header" %>
               <%#<%= link_to "会員一覧", admins_users_path, class: "col-xs-3 headerNavBtn admin_header" %>

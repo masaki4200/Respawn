@@ -20,6 +20,8 @@ class Users::ItemsController < ApplicationController
 
   def new
   	@item = Item.new
+  	@genres = Category.genre_statuses.keys
+    @categories = Category.all
   end
 
   def create
@@ -35,7 +37,7 @@ class Users::ItemsController < ApplicationController
   private
 
   def item_params
-  	params.require(:item).permit(:title, :item_image, :description)
+  	params.require(:item).permit(:title, :item_image, :description, :genre_name, :categorie_id, :user_id, :item_image_id, :item_sound_id, :item_video_id )
   end
 
 end

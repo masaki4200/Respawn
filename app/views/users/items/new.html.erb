@@ -3,9 +3,17 @@
 
 <h1>投稿するジャンル/カテゴリーを選択していて下さい</h1>
 
+<%= render 'users/items/genre_list', genres: @genres %>
+
+
+<%= render 'users/items/category_list', categories: @categories %>
 
 <p>画像</p>
 <%= form_for @item, url: users_items_path do |f| %>
+
+
+
+
 	<div class="field row">
 		<%= f.label :title %>
 		<%= f.text_field :title, class: "col-xs-12 item_title" %>
@@ -31,9 +39,10 @@
 	</div>
 
 	<div class="field row">
-		<%= f.label :category %>
-		<%= f.text_area :category, class: "col-xs-12 item_body" %>
+		
 	</div>
+
+	
 
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>

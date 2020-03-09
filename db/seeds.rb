@@ -17,7 +17,7 @@ Category.create(id:5, name: "ボイス", genre_status: 1, categorie_status: 1)
 Category.create(id:6, name: "音楽", genre_status: 1, categorie_status: 1)
 
 # カテゴリー　動画　-------------------------------------------------------
-Category.create(id:7, name: "動物", genre_status: 2, categorie_status: 1)
-Category.create(id:8, name: "風景", genre_status: 2, categorie_status: 1)
-Category.create(id:9, name: "食べ物", genre_status: 2, categorie_status: 1)
+Category.create!(id:7, name: "動物", genre_status: 2, categorie_status: 1)
+Category.create!(id:8, name: "風景", genre_status: 2, categorie_status: 1)
+Category.create!(id:9, name: "食べ物", genre_status: 2, categorie_status: 1)
 

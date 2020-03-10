@@ -1,2 +1,49 @@
-<h1>Users::Items#edit</h1>
-<p>Find me in app/views/users/items/edit.html.erb</p>
+<%= javascript_include_tag "user.js" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+
+			<h1>Edit</h1>
+			<p>Find me in app/views/users/items/edit.html.erb</p>
+
+
+			<%= form_for @item, url: users_item_path(@item) do |f| %>
+				<div class="field row">
+					<%= f.label :category %>
+					<%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %>
+				</div>
+
+
+				<div class="field row">
+					<%= f.label :title %><br>
+					<%= f.text_field :title, class: "col-xs-6 item_title" %>
+				</div>
+
+				<div class="field row">
+					<div class ="work-image-pre center">
+						<%= attachment_image_tag @item, :item_image, src: "", id:"item_image", size: "300x200", alt:"Image preview", class: "item_prev", fallback: "noimage2.png" %><br>
+					</div>
+
+				    <div class="file-field input-field">
+				    	<div class="btn">
+				        	<span>File</span>
+			<!-- 画像フォーム -->
+				        	<%= f.attachment_field :item_image, id:"post_img" %><br>
+				      	</div>
+				    </div>
+				</div>
+
+				<div class="field row">
+					<%= f.label :description %><br>
+					<%= f.text_area :description, class: "col-xs-6 item_body" %>
+				</div>
+
+
+				<div class="actions row">
+					<%= f.submit class: "btn btn-primary col-xs-6" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

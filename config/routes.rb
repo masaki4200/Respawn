@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 # user #
 # ---------------------------------------------------
 
+ get '/users/withdraw', to: 'users/users#withdraw'
 # devise
   devise_for :users, controllers: {
     sessions:      'devise/users/sessions',
@@ -22,7 +23,10 @@ Rails.application.routes.draw do
   get "home/about" => "users/home#about"
   namespace :users do
     resources :users
-    resources :items
+    resources :items do
+      resource :favorites, only: [:create, :destroy]
+    resource :book_comments, only: [:create, :destroy]
+  end
   end
 
 

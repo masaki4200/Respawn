@@ -14,48 +14,44 @@
   </head>
 
 
-
   <div id="wrap">
 <header>
   <div class="header">
-    <div class="container">
+    <div class="container-head">
 
       <div class="row">
 
 
         <div class="col-xs-6 headerNavBox">
+          <a class="logo"><img src="/assets/logo.png" alt="" size= "300x200" ></a>
 
-          <div class="row">
-            <% if user_signed_in? && !request.fullpath.include?("admins") %>
-              <%= link_to "MyPage", users_user_path(current_user.id), class: "col-xs-2 headerNavBtn" %>
-              <%= link_to "About", home_about_path, class: "col-xs-2 headerNavBtn" %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "col-xs-3 headerNavBtn" %>
-
-              <!-- 後に削除 -->
-              <%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %>
-
-            <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
-              <%#<%= link_to "商品一覧", admins_items_path, class: "col-xs-2 headerNavBtn admin_header" %>
-              <%#<%= link_to "会員一覧", admins_users_path, class: "col-xs-3 headerNavBtn admin_header" %>
-              <%#<%= link_to "ジャンル管理", admins_genres_path, class: "col-xs-3 headerNavBtn admin_header" %>
-              <%= link_to "", destroy_admin_session_path, method: :delete, class: "col-xs-1 headerNavBtn admin_header glyphicon glyphicon-log-out" %>
-             <div class="col-xs-5 pull-right">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="キーワード">
-                <span class="input-group-btn">
-                  <button class="btn btn-info" type="submit">
-                    <i class='glyphicon glyphicon-search'></i>
-                  </button>
-                </span>
-              </div>
-            </div>
-            <% else %>
-              <%#<%= link_to "ながのCAKEとは", home_about_path, class: "col-xs-4 headerNavBtn" %>
-              <%= link_to "新規会員登録", new_user_registration_path, class: "col-xs-4 headerNavBtn" %>
-              <%= link_to "ログイン", new_user_session_path, class: "col-xs-4 headerNavBtn" %>
-            <% end %>
-          </div>
         </div>
+
+        <div class="col-xs-6">
+          <% if user_signed_in? && !request.fullpath.include?("admins") %>
+
+          <nav>
+            <ul>
+            <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "glyphicon glyphicon-item items" %></li>
+            <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
+            <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-item items" %></li>
+            <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %></li>
+            </ul>
+          </nav>
+
+          <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+            <%#<%= link_to "商品一覧", admins_items_path, class: "col-xs-2 headerNavBtn admin_header" %>
+            <%#<%= link_to "会員一覧", admins_users_path, class: "col-xs-3 headerNavBtn admin_header" %>
+            <%#<%= link_to "ジャンル管理", admins_genres_path, class: "col-xs-3 headerNavBtn admin_header" %>
+            <%= link_to "", destroy_admin_session_path, method: :delete, class: "col-xs-1 headerNavBtn admin_header glyphicon glyphicon-log-out" %>
+
+          <% else %>
+            <%#<%= link_to "ながのCAKEとは", home_about_path, class: "col-xs-4 headerNavBtn" %>
+            <%= link_to "新規会員登録", new_user_registration_path, class: "col-xs-4 headerNavBtn" %>
+            <%= link_to "ログイン", new_user_session_path, class: "col-xs-4 headerNavBtn" %>
+          <% end %>
+        </div>
+      </div>
 
 
 

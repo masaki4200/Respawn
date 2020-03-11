@@ -10,7 +10,7 @@ class Users::ItemsController < ApplicationController
 
   def edit
   	@item = Item.find(params[:id])
-    @categories = Category.all
+    @categories = Category.all 
     if @item.user.id != current_user.id
       redirect_to items_path
     end
@@ -34,11 +34,12 @@ class Users::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if   @item.update(item_params)
+    if @item.update(item_params)
            flash[:notice] = "You have updated user successfully"
            redirect_to users_item_path(@item.id)
-      else render 'edit'
-      end
+    else
+       render :edit
+    end
   end
 
 

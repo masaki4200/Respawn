@@ -56,3 +56,63 @@ border-radius: 5px; /* 角丸を指定する */
 .fa-hamburger {
   font-size: 30px;
 }
+
+
+.item_content {
+  margin-left: 7px;
+  margin-bottom: 10px;
+}
+
+.item_img {
+  margin-bottom: 10px;
+}
+
+.item_img:hover {
+  opacity: 0.8 ;
+}
+
+.item_img:active {
+  opacity: 0.5 ;
+}
+
+.item_list_box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item_btn {
+  .item_link{
+    color: #444;
+    text-decoration: none;
+  }
+}
+
+.item_btn {
+  .item_link:hover{
+    color: #808080;
+    text-decoration: none;
+  }
+}
+
+.genre_text {
+  color :#444;
+}
+
+.genre_text:hover {
+  color: #808080;
+}
+
+.table {
+  /*border: 1px solid #6f5436;*/
+  background-color: #ede4e1;
+  overflow: hidden;
+  border-radius: 6px;
+  filter: drop-shadow(3px 3px 3px rgba(0,0,0,0.2));
+}
+
+.table tr th{
+  font-weight: bold;
+  color: #6f5436;
+  background-color: #e2d3d0;
+  /*てすとだよ〜*/
+}

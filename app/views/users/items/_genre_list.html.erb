@@ -1,25 +1,27 @@
-<div class="col-xs-3">
+
   <article id="genre_list_area">
     <table class="table">
       <thead>
         <tr>
           <th class="table_genre ">
-            <h2>ジャンル一覧</h2>
+            <span>ジャンル検索</span>
           </th>
         </tr>
       </thead>
       <tbody>
           <tr>
-            <% genres.each do |genre| %>
-
-
-               <td>
-                 <input type="checkbox" name="fruits" value= genre id="appple">
-                 <label for="apple" class="label"> <%= genre %> </label>
-               </td>
-            <% end %>
+            <td style="border-style: none;"><%= link_to "すべて", users_items_path, class: "genre_text"; %></td>
           </tr>
+          <tr>
+            <% categories.each do |category| %>
+              <td style="border-style: none;">
+                <%= link_to users_items_path(category_id: category.id) do %>
+                  <span class="genre_text" ><%= category.name %></span>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </article>
-</div>
+

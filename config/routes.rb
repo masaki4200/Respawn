@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     resources :users
     resources :items do
       resource :favorites, only: [:create, :destroy]
-    resource :book_comments, only: [:create, :destroy]
+    resource :item_comments, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
   end
   end
 

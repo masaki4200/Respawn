@@ -12,6 +12,7 @@ class Users::ItemCommentsController < ApplicationController
         @item = @item_comment.item
     if @item_comment.user == current_user
       @item_comment.destroy
+      render :
   	else
   	redirect_to request.referer
     end

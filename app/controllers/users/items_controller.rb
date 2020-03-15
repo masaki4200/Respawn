@@ -10,7 +10,7 @@ class Users::ItemsController < ApplicationController
 
   def edit
   	@item = Item.find(params[:id])
-    @categories = Category.all 
+    @categories = Category.all
     if @item.user.id != current_user.id
       redirect_to items_path
     end

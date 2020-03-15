@@ -22,10 +22,14 @@ Rails.application.routes.draw do
   root 'users/home#top'
   get "home/about" => "users/home#about"
   namespace :users do
-    resources :users
+    resources :users do
+      resource :relationships, only: [:create, :destroy]
+  get 'follows' => 'relationships#follower', as: 'follows'
+    get 'followers' => 'relationships#followed', as: 'followers'
+  end
     resources :items do
-      resource :favorites, only: [:create, :destroy]
-    resource :book_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    resource :item_comments, only: [:create, :destroy]
   end
   end
 

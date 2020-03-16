@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+  	<div class="col-xs-8 col-xs-offset-2">
+
+		<% @users.each do|user| %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "no_image.jpg") %></td>
+					<td><%= user.name%></td>
+					<td>フォロー数：<%= user.followings.count %></td>
+					<td>フォロワー数：<%= user.followers.count %></td>
+					<td>
+						<% if user.followed_by?(current_user) %>
+				            <p><%=link_to "フォロー済み", users_user_relationships_path(user.id), method: :delete, class: "btn btn-success"%></p>
+				        <% else %>
+				            <p><%=link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-default" %></p>
+				        <% end %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>
+

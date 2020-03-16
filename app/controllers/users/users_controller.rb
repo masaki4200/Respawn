@@ -34,6 +34,8 @@ class Users::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  
+
   private
   def user_params
     params.require(:user).permit(:name,:user_image,:introduction)

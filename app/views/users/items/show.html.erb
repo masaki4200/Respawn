@@ -8,26 +8,67 @@
 
     <div class="col-xs-9">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-4">
           <h2>アイテム詳細画面</h2>
             <%= attachment_image_tag @item, :item_image, :fill, 600, 400, fallback: "noimage2.png", size: '300x200'  %>
+
+
+            <div>
+              <%= form_with model: [:users, @item, @item_comment], data: {remote: true} do |f| %>
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+                      </div>
+                  </div>
+                <%= f.submit "コメントする", class: "btn btn-primary btn-lg btn-base-1 mt-20 pull-right" %>
+
+              <% end %>
+            </div>
+            <div id="item_comment">
+              <%= render 'comment_index', item_comments: @item_comments %>
+            </div>
+
+
         </div>
         <div class="col-xs-6">
-          <table class='item_detail_table'>
-                <tr>
-                  <th>アイテム名</th>
-                  <th><%= @item.title %></th>
-                </tr>
-                <tr>
-                  <th>アイテム説明</th>
-                  <th><%= @item.description %></th>
-                </tr>
-                <tr>
-                  <th>ジャンル/カテゴリー</th>
-                  <th><%= @item.category.genre_status %>/<%= @item.category.name %></th>
-                </tr>
 
-          </table>
+            <div>
+              <h2><%= @item.title %></h2>
+            </div>
+            <div>
+              <span>ジャンル/カテゴリー：</span>
+              <span><%= @item.category.genre_status %>/<%= @item.category.name %></span>
+            </div>
+            <div>
+              <p>アイテム概要</p>
+              <p><%= @item.description %></p>
+            </div>
+
+
+            <div>
+              <% if @item.favorited_by?(current_user) %>
+          <div>
+            <%= link_to users_item_favorites_path(@item), method: :delete, class: "fav", remote: true do %>
+                <i class="fas fa-hamburger" aria-hidden="true" style="color: orange;" ></i>
+                <%= @item.favorites.count %>
+                <% end %>
+          </div>
+          <% else %>
+
+          <div>
+            <%= link_to users_item_favorites_path(@item), method: :post, class: "fav", remote: true do %>
+                <i class="fas fa-hamburger" aria-hidden="true" style="color: gray;" ></i>
+                <%= @item.favorites.count %>
+              <% end %>
+          </div>
+
+
+          <% end %>
+          <div>
+           <p> コメント数：<%= @item.item_comments.count %></p>
+          </div>
+            </div>
+
               <%= link_to '編集する', edit_users_item_path(@item), class: "btn btn-primary btn-lg pull-right", data: {"turbolinks" => false} %>
         </div>
       </div>

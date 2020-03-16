@@ -1,11 +1,24 @@
 class Users::ItemsController < ApplicationController
 
   def index
-  	@items = Item.all
+  	if params[:category_id] != nil
+    @items = Item.where(category_id: params[:category_id]).page(params[:page])
+    @items_count = @items.count
+    @categories = Category.where(category_status: true)
+    @category = Category.find(params[:category_id])
+    else
+    @items = Item.all.page(params[:page])
+    @items_all = Item.all
+    @items_count = @items_all.count
+    @categories = Category.where(category_status: true)
+    @category = Category.all
+    end
   end
 
   def show
   	@item = Item.find(params[:id])
+    @item_comment = ItemComment.new
+    @item_comments = @item.item_comments
   end
 
   def edit
@@ -42,6 +55,11 @@ class Users::ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to users_user_path(current_user)
+  end
 
   private
 

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :users do
       resource :relationships, only: [:create, :destroy]
-  get 'follows' => 'relationships#follower', as: 'follows'
+    get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'
   end
     resources :items do

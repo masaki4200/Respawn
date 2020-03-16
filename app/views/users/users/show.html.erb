@@ -47,18 +47,21 @@
 							</tr>
 
 					</table>
+					<p><%=link_to "フォロー 一覧", users_user_follows_path(user_id: @user.id) %></p>
+					<p><%=link_to "フォロワー　一覧", users_user_followers_path(user_id: @user.id) %></p>
+					<% if current_user != @user %>
+					    <% if @user.followed_by?(current_user) %>
+					        <p><%=link_to "フォロー済み", users_user_relationships_path(@user.id), method: :delete %></p>
+					    <% else %>
+					        <p><%=link_to "フォローする", users_user_relationships_path(@user.id), method: :post %></p>
+					    <% end %>
+					<% end %>
 				</div>
-				<div>
-<p><%=link_to "フォロー", users_user_follows_path(@user.id) %></p>
-<p><%=link_to "フォロワー", users_user_followers_path(@user.id) %></p>
-<% if current_user != @user %>
-    <% if @user.followed_by?(current_user) %>
-        <p><%=link_to "フォロー済み", users_user_relationships_path(@user.id), method: :delete %></p>
-    <% else %>
-        <p><%=link_to "フォローする", users_user_relationships_path(@user.id), method: :post %></p>
-    <% end %>
-<% end %>
+
+				<div class="asdfff">
+					
 				</div>
+
 			</div>
 		</div>
 	</div>

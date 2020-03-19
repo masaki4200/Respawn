@@ -1,30 +1,43 @@
-
 <div class="container">
+	<div>
+		<h1><%= link_to users_user_path(current_user.id) do %>
+		<i class="fas fa-chevron-left"></i></h1>
+		<% end %>
+	</div>
   <div class="row">
   	<div class="col-xs-8 col-xs-offset-2">
+  		<h1>Follower</h1>
 
-		<h1>Users#followed</h1>
-		<p>Find me in app/views/users/follows.html.erb</p>
+		<% @users.each do|user| %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>image</th>
+					<th>name</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
 
-		<% @users.each do |user| %>
 			<tbody>
-					<tr>
-						<td><%= link_to users_user_path(user.id), class: "item_link" do %>
-							<%= attachment_image_tag(user, :user_image, size: "45x45", fallback: "no_image.jpg") %></td>
-							<% end %>
-						<td><%= user.name%></td>
-						<td>フォロー数：<%= user.followings.count %></td>
-						<td>フォロワー数：<%= user.followers.count %></td>
-						<td>
-							<% if @myUser == current_user %>
-						      <%#<% user.followed_by?(current_user) %>
-						        <p><%= link_to "フォローを外す", user_relationships_path(user.id), method: :delete, class: "btn btn-success col-xs-5" %></p>
-						    <% end %>
-						</td>
-					</tr>
+				<tr>
+					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "no_image.jpg") %></td>
+					<td><%= user.name%></td>
+					<td>フォロー数：<%= user.followings.count %></td>
+					<td>フォロワー数：<%= user.followers.count %></td>
+					<td>
+						<% if user.followed_by?(current_user) %>
+				            <p><%=link_to "フォロー済み", users_user_relationships_path(user.id), method: :delete, class: "btn btn-success"%></p>
+				        <% else %>
+				            <p><%=link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-default" %></p>
+				        <% end %>
+					</td>
+				</tr>
+				<% end %>
 			</tbody>
-		<% end %>
-
+		</table>
 	</div>
   </div>
 </div>
+

@@ -34,7 +34,15 @@ class Users::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  
+  def favorites
+    @user = User.find(params[:user_id])
+    @favoriteItemIds = [:item_id]
+    @items.each |item| do
+    @favoriteItemIds.push(item.item_id)
+    end
+    @favoriteItems = Item.where(id: @favoriteItemIds)
+    # puts @items.to_json
+  end
 
   private
   def user_params

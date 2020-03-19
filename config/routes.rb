@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  get '/search' => 'search#search'
   # namespace :users do
   #   get 'items/index'
   #   get 'items/edit'
@@ -23,14 +24,15 @@ Rails.application.routes.draw do
   get "home/about" => "users/home#about"
   namespace :users do
     resources :users do
+      get 'favorites' => 'users#favorites', as:'favorites'
       resource :relationships, only: [:create, :destroy]
     get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'
   end
     resources :items do
-    resource :favorites, only: [:create, :destroy]
-    resource :item_comments, only: [:create, :destroy]
-  end
+      resource :favorites, only: [:create, :destroy]
+      resource :item_comments, only: [:create, :destroy]
+    end
   end
 
 

@@ -22,3 +22,4 @@ class Users::RelationshipsController < ApplicationController
   end
 
 end
+

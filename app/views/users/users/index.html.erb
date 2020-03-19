@@ -16,6 +16,8 @@
 						<th>Item count</th>
 						<th>Follows</th>
 						<th>Followers</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -23,22 +25,22 @@
 					<tr>
 						<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "noimage2.png") %></td>
 						<td><%= user.name%></td>
-						<td>件</td>
+						<td><%= user.items.count %>件</td>
 
-						<td><%#<%= user.followings.count %>人</td>
-						<td><%#<%= user.followers.count %>人</td>
+						<td><%= user.followings.count %>人</td>
+						<td><%= user.followers.count %>人</td>
 
 
 
 						<td><% if current_user != user %>
-						        <%#<% if user.followed_by?(current_user) %>
-						            <p><%#<%=link_to "フォロー済み", user_relationships_path(user.id), method: :delete, class: "btn btn-success col-xs-7"%></p>
-						        <%#<% else %>
-						            <p><%#<%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-default col-xs-7" %></p>
-						        <%#<% end %>
+						        <% if user.followed_by?(current_user) %>
+						            <p><%=link_to "フォロー済み", users_user_relationships_path(user.id), method: :delete, class: "btn btn-success col-xs-7"%></p>
+						        <% else %>
+						            <p><%=link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-default col-xs-7" %></p>
+						        <% end %>
 						    <% end %>
 						</td>
-						<td><%#<%= link_to "Show", user, class: "user_#{user.id}" %></td>
+						<td><%= link_to "Show", users_user_path(user.id) %></td>
 					</tr>
 					<% end %>
 				</tbody>

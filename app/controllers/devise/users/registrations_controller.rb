@@ -10,9 +10,23 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    # binding.pry
+    current_user.default_image = "event_easter_#{rand(7)}.png"
+    color_hash = {
+      0 => '#ffd6ff',
+      1 => '#d6d6ff',
+      2 => '#d6ffff',
+      3 => '#d6ffd6',
+      4 => '#ffffcc',
+      5 => '#00bfff',
+      6 => '#cd5c5c',
+      7 => '#ffd700',
+    }
+    current_user.default_backgroud_color = color_hash[rand(7)]
+    current_user.save
+  end
 
   # GET /resource/edit
   # def edit

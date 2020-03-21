@@ -1,2 +1,2 @@
-$("#item_comment").html("<%= j(render 'comment_index', { item_comments: @item.item_comments }) %>");
+$("#item_comment").html("<%= j(render 'users/items/comment_index', { item_comments: @item.item_comments }) %>");
 $("textarea").val('');

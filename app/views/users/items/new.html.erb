@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 headerNavBox">
+    <div class="col-xs-6 headerNavBox col-xs-offset-3">
 
 
 		<h1>投稿するジャンル/カテゴリーを選択していて下さい</h1>
@@ -31,8 +31,8 @@
 
 
 			<div class="field row">
-				<%= f.label :title %>
-				<%= f.text_field :title, class: "col-xs-12 item_title" %>
+				<h4><%= f.label :title %></h4>
+				<%= f.text_field :title, class: "col-xs-5 item_title" %>
 			</div>
 
 			<div class="field row">
@@ -50,8 +50,8 @@
 			</div>
 
 			<div class="field row">
-				<%= f.label :description %>
-				<%= f.text_area :description, class: "col-xs-12 item_body" %>
+				<h4><%= f.label :description %></h4>
+				<%= f.text_area :description, class: "col-xs-5 item_body" %>
 			</div>
 		　
 			<div class="field row">
@@ -61,7 +61,7 @@
 			
 
 			<div class="actions row">
-				<%= f.submit class: "btn btn-primary col-xs-12" %>
+				<%= f.submit class: "btn btn-primary col-xs-5" %>
 			</div>
 		<% end %>
 		<p>音・音楽</p>

@@ -1,3 +1,4 @@
+<p> コメント数：<%= @item.item_comments.count %></p>
 <% item_comments.each do |item_comment| %>
     <li class="comment">
         <div class="comment-body bb">
@@ -11,12 +12,10 @@
                     </span>
                 </div>
                 <div class="comment-entry"><%= item_comment.comment %>
-
                 </div>
                 <div><% unless current_user != item_comment.user %>
                 	<%= link_to "削除", users_item_item_comments_path(item_comment.id), method: :delete, class: "com", remote: true %>
                 	<% end %>
-
                 </div>
             </div>
         </div>

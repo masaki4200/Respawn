@@ -5,7 +5,8 @@ class Users::UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.page(params[:page])
+    @items_count = @items.count
   end
 
   def edit
@@ -34,7 +35,11 @@ class Users::UsersController < ApplicationController
     redirect_to root_path
   end
 
-  
+  def favorites
+    @user = User.find(params[:user_id])
+    @favorite_item_ids = @user.favorites.pluck(:item_id)
+    @favorite_items = Item.where(id: @favorite_item_ids).page(params[:page]).per(16)
+  end
 
   private
   def user_params

@@ -1,6 +1,5 @@
 <%= javascript_include_tag "user.js" %>
-
-
+ 
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,31 +13,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   </head>
 
+
+
+
+<body class="main-back-color">
 
   <div id="wrap">
 <header>
   <div class="header">
     <div class="container-head">
 
-      <div class="row">
+      <div>
 
 
-        <div class="col-xs-6 headerNavBox">
-          <a class="logo"><img src="/assets/logo.png" alt="" size= "300x200" ></a>
+        <div class="col-xs-3 headerNavBox logo">
+          <%= link_to root_path do %>
+          <%= image_tag 'logo11.png' , width: "300px", height: "auto" %>
+          <% end %>
+        </div>
+        <div class="col-xs-4 headerNavBox">
+          <div>
+          <% if user_signed_in? && !request.fullpath.include?("admins") %>
+
+                <span class="search-form">
+                  <%= form_tag(search_path, method: :get) do %>
+                    <%= text_field_tag 'search[content]' %>
+                    <%= select_tag 'search[model]', options_for_select({ "User" => "user", "Item" => "item" }) %>
+                    <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }) %>
+                    <%= submit_tag '検索', class: "btn btn-primary" %>
+                  <% end %>
+                </span>
+          <% else %>
+          <% end %>
+          </div>
+          <div>
+            <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
+          </div>
 
         </div>
 
-        <div class="col-xs-6">
+
+
+        <div class="col-xs-5 head-all">
           <% if user_signed_in? && !request.fullpath.include?("admins") %>
 
           <nav>
             <ul>
+            <li>
+
+            </li>
             <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "glyphicon glyphicon-item items" %></li>
             <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
             <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-item items" %></li>
-            <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %></li>
+            <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items',data: {"turbolinks" => false} %></li>
             </ul>
           </nav>
 
@@ -67,11 +99,13 @@
   </div>
 </header>
 </div>
+<div class="container">
 
-
-  <body class="main-back-color">
+<div class="row">
     <%= yield %>
-  </body>
+</div>
+</div>
+
     <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
     <% if user_signed_in? && request.fullpath.index("/admins/") == nil %>
   <footer>
@@ -84,4 +118,5 @@
 
     <% end %>
 </footer>
+ </body>
 </html>

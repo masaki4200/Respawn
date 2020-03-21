@@ -53,8 +53,12 @@ border-radius: 5px; /* 角丸を指定する */
 }
 
 
-.fa-hamburger {
+.fa-heart {
   font-size: 30px;
+}
+
+.item-index {
+  height: 100%;
 }
 
 
@@ -114,5 +118,21 @@ border-radius: 5px; /* 角丸を指定する */
   font-weight: bold;
   color: #6f5436;
   background-color: #ffddbc;
-  /*てすとだよ〜*/
+}
+
+
+/*投稿のホバー機能*/
+.img_hover{
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
+  margin-right: 15px;
+}
+.img_hover img{
+  width: 100%;
+  cursor: pointer;
+}
+.img_hover:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
 }

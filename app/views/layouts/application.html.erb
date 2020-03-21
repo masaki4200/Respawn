@@ -1,5 +1,5 @@
 <%= javascript_include_tag "user.js" %>
-
+ 
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Sawarabi+Gothic&display=swap" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   </head>
@@ -31,8 +31,10 @@
       <div>
 
 
-        <div class="col-xs-3 headerNavBox">
-          <a class="logo"><img src="/assets/logo11.png" width="300px" height="auto" alt=""  ></a>
+        <div class="col-xs-3 headerNavBox logo">
+          <%= link_to root_path do %>
+          <%= image_tag 'logo11.png' , width: "300px", height: "auto" %>
+          <% end %>
         </div>
         <div class="col-xs-4 headerNavBox">
           <div>

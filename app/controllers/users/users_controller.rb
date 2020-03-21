@@ -5,7 +5,8 @@ class Users::UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.page(params[:page])
+    @items_count = @items.count
   end
 
   def edit
@@ -36,12 +37,8 @@ class Users::UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:user_id])
-    @favoriteItemIds = [:item_id]
-    @items.each |item| do
-    @favoriteItemIds.push(item.item_id)
-    end
-    @favoriteItems = Item.where(id: @favoriteItemIds)
-    # puts @items.to_json
+    @favorite_item_ids = @user.favorites.pluck(:item_id)
+    @favorite_items = Item.where(id: @favorite_item_ids).page(params[:page]).per(2)
   end
 
   private

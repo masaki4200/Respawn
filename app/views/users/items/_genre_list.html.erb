@@ -13,6 +13,9 @@
             <td style="border-style: none;"><%= link_to "すべて", users_items_path, class: "genre_text"; %></td>
           </tr>
           <tr>
+            <td style="border-style: none;"><%= link_to "トップ５", users_items_path(:place => "top"), class: "genre_text"; %></td>
+          </tr>
+          <tr>
             <% categories.each do |category| %>
               <td style="border-style: none;">
                 <%= link_to users_items_path(category_id: category.id) do %>

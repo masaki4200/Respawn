@@ -2,84 +2,69 @@
 
 
 <div class="container mypage">
-	<div class="row">
-
+  	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<div class="row">
-
+	  		<div class="row">
 				<div class="col-xs-6">
-
-						<h1>マイページ</h1>
-						<h4 class="customer-info">登録情報</h4>
-				<% if user_signed_in? %>
-						<div>
-							<% if @user == current_user %>
-							<%= link_to edit_users_user_path do %>
-							<%= image_tag 'edit.png', :size=>"80x80" ,class: "logo-image" %>
-                      		<% end %>
-						</div>
-						<div>
-							
-							  <a type="button" data-toggle="modal" data-target="#sampleModal" style="cursor: pointer;">
-									<%= image_tag 'follow.png' , height: "80px", width: "80px" %>
-							  </a>
-
-
-								<!-- モーダル・ダイアログ -->
-							<div class="modal fade" id="sampleModal" tabindex="-1">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<div class ="following-user">
-												<div row>
-													<div class="col-xs-2">
-													</div>
-													<div class="col-xs-3" >
-											          <%= link_to users_user_follows_path(@user) do %>
-											          <%= image_tag 'following.png' , height: "100px", width: "auto" %>
-											          <% end %>
-									          		</div>
-									          		<div class="col-xs-2">
-													</div>
-									          		<div class="col-xs-3" >
-									    		      <%= link_to users_user_followers_path(@user) do %>
-									    		      <%= image_tag 'follower.png' , height: "100px", width: "auto" %>
-													  <% end %>
-									        		</div>
-									        		<div class="col-xs-2">
-													</div>
-									        	</div>
-									        </div>
-									        <div class ="followed-user">
-									        </div>
-										</div>
+		  			<h1>マイページ</h1>
+		  			<h4 class="customer-info">登録情報</h4>
+		  			<% if user_signed_in? %>
+		  			<div>
+						<% if @user == current_user %>
+						<%= link_to edit_users_user_path do %>
+						<%= image_tag 'edit.png', :size=>"80x80" ,class: "logo-image" %>
+			      		<% end %>
+			      	</div>
+		  			<div>
+						<a type="button" data-toggle="modal" data-target="#sampleModal" style="cursor: pointer;">
+						  <%= image_tag 'follow.png' , height: "80px", width: "80px" %>
+						</a>
+						<!-- モーダル・ダイアログ -->
+						<div class="modal fade" id="sampleModal" tabindex="-1">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<div class ="following-user">
+											<div row>
+												<div class="col-xs-2">
+												</div>
+												<div class="col-xs-3" >
+										            <%= link_to users_user_follows_path(@user) do %>
+										            <%= image_tag 'following.png' , height: "100px", width: "auto" %>
+										            <% end %>
+								          		</div>
+								          		<div class="col-xs-2">
+												</div>
+								          		<div class="col-xs-3" >
+								    		        <%= link_to users_user_followers_path(@user) do %>
+								    		        <%= image_tag 'follower.png' , height: "100px", width: "auto" %>
+												    <% end %>
+								        		</div>
+								        		<div class="col-xs-2">
+												</div>
+								        	</div>
+								        </div>
+								        <div class ="followed-user">
+								        </div>
 									</div>
 								</div>
 							</div>
-							<% end %>
 						</div>
+					<% end %>
+					</div>
 
 					<div class="info">
 						<table class="my_table">
-						  <tr>
-						    <th>Name</th><td>【<%= @user.name %>】</td>
-						  </tr>
+						    <tr>
+						        <th>Name</th><td>【<%= @user.name %>】</td>
+						    </tr>
 						  <tr>
 						  	<% if current_user == @user %>
 						    <th>メールアドレス</th><td>【<%= @user.email %>】</td>
 						    <% end %>
 						  </tr>
 						  <tr>
-						  	<th>お気に入り</th><td><%= link_to "一覧を見る", class: "btn btn-primary" %></td>
-						  </tr>
-						  <tr>
-						  	<th>投稿一覧</th><td><%= link_to "一覧を見る", class: "btn btn-primary" %></td>
-						  </tr>
-						  <tr>
-						  	<th>フォロー</th><td><%=link_to "一覧を見る", users_user_follows_path(user_id: @user.id) %></td>
-						  </tr>
-						  <tr>
-						  	<th>フォロワー</th><td><%=link_to "一覧を見る", users_user_followers_path(user_id: @user.id) %></td>
+						  	<th>お気に入り</th><td><%= link_to "一覧を見る", users_user_favorites_path(@user) %></td>
 						  </tr>
 						</table>
 					</div>
@@ -93,15 +78,14 @@
 				</div>
 
 				<div class="col-xs-6">
-					<table class="table">
-							<tr><%= attachment_image_tag(@user, :user_image, height: "200px", width: "300px", fallback: "no_image.jpg") %></tr>
-
-							<tr>
-								<th>ひとこと</th>
-								<th><%= @user.introduction %></th>
-							</tr>
-
-					</table>
+					<div class="table">
+							<div class="user_image" style="background-color: <%= @user.default_backgroud_color %>;"><%= attachment_image_tag(@user, :user_image, height: "300px", width: "450px", fallback: @user.default_image) %>
+							</div>
+					</div>
+					<div>
+						<div>ひとこと：</div>
+						<div><%= @user.introduction %></div>
+					</div>
 					<% if user_signed_in? %>
 					<% if current_user != @user %>
 					    <% if @user.followed_by?(current_user) %>
@@ -113,7 +97,30 @@
 					 <% else %>
 					<% end %>
 				</div>
-
+			　　 <div class="col-xs-12">
+				  <h2>投稿 一覧</h2>
+				  <div class="title">
+				 	<div>
+				 		<span class="item_count">全 <%= @items.count %> 件</span>
+				 	</div>
+				    <div class="item_list_box">
+			          <% @items.each do |item| %>
+			          <div class="item_content">
+			            <%= link_to users_item_path(item.id), class: "item_link" do %>
+			            <%= attachment_image_tag item, :item_image, :fill, 200, 150, format: 'jpeg', class: "img-rounded pull-left profile-img item_img", fallback: "no_image.jpg", :size =>'200x150' %>
+			            <% end %>
+			            <div class="item_btn item_title">
+			              <%= link_to item.title, users_item_path(item.id), class: "item_link" %>
+			            </div>
+			            <div class="price_text">
+			                <%= item.category.genre_status %>/<%= item.category.name %>
+			            </div>
+			          </div>
+			          <% end %>
+				    </div>
+				      <%= paginate @items, class: "pagination" %>
+				  </div>
+				</div>
 			</div>
 		</div>
 	</div>

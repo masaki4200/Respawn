@@ -6,6 +6,12 @@ class Users::ItemsController < ApplicationController
     @items_count = @items.count
     @categories = Category.where(category_status: true)
     @category = Category.find(params[:category_id])
+
+    elsif params[:place] && params[:place] == 'top'
+      @items = Item.joins(:favorites).group(:id).order('count(item_id) desc').limit(5)
+      @items_count = 5
+      @categories = Category.where(category_status: true)
+      @category = Category.all
     else
     @items = Item.all.page(params[:page])
     @items_all = Item.all

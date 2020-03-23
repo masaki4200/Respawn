@@ -1,6 +1,8 @@
 class Users::ItemsController < ApplicationController
 
   def index
+
+
   	if params[:category_id] != nil
     @items = Item.where(category_id: params[:category_id]).page(params[:page])
     @items_count = @items.count
@@ -22,6 +24,9 @@ class Users::ItemsController < ApplicationController
   end
 
   def show
+
+
+
   	@item = Item.find(params[:id])
     @item_comment = ItemComment.new
     @item_comments = @item.item_comments

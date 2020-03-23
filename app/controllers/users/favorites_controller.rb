@@ -4,6 +4,7 @@ class Users::FavoritesController < ApplicationController
   	@item = Item.find(params[:item_id])
             favorite = current_user.favorites.new(item_id: @item.id)
             favorite.save
+    @item.create_notification_favorite!(current_user)
 
   end
   def destroy

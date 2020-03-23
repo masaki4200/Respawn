@@ -5,6 +5,8 @@ class Users::ItemCommentsController < ApplicationController
         @item_comment = @item.item_comments.new(item_comment_params)
         @item_comment.user_id = current_user.id
         @item_comment.save
+        # 通知
+        @item.create_notification_comment!(current_user, @item_comment.id)
 	end
 
 	def destroy

@@ -1,15 +1,15 @@
 class Users::ItemCommentsController < ApplicationController
 	def create
 		@item = Item.find(params[:item_id])
-        @item_new = Item.new
+        # @item_new = Item.new
         @item_comment = @item.item_comments.new(item_comment_params)
         @item_comment.user_id = current_user.id
 
       if @item_comment.save
         # 通知
-        @item.create_notification_comment!(current_user, @item_comment.id)
+         @item.create_notification_comment!(current_user, @item_comment.id)
       end
-      @comments = @item.item_comments.reverse
+       @comments = @item.item_comments.reverse
 	end
 
 	def destroy
@@ -29,3 +29,4 @@ private
 	    params.require(:item_comment).permit(:item_id, :user_id, :comment)
 	end
 end
+

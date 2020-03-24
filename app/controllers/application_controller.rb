@@ -26,8 +26,7 @@ class ApplicationController < ActionController::Base
 	def notification
 	    @notifications = current_user
 	      .passive_notifications.where.not(visitor_id: current_user)
-      	  .where(checked: true)
-      	  .page(params[:page]).per(10)
+			.page(params[:page]).per(10)
     # binding.pry
     	@notifications.each do |notification|
       	  notification.update_attributes(checked: true)

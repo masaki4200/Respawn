@@ -34,27 +34,23 @@
             <%= image_tag 'logo11.png' , width: "300px", height: "auto" %>
             <% end %>
             </div>
-            <div class="youkoso">
-              <% if user_signed_in? %>
-              ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user),class: "current_username" %>さん
-              <% end %>
-            </div>
-            <div class = "notificationbar">
-              <%= link_to users_notifications_path, :data => {:target=>"slide-out"},:class=>"sidenav-trigger" do %>
-                <% if unchecked_notifications.any?%>
-                  <i class="far fa-bell true" style="color: yellow;"></i>
-                  <%#= render 'users/notifications/index' %>
+            <div class="">
+              <div class="row">
+                <div id="notifications" class="col-xs-2">
+                  <%= render "users/notifications/index", notifications: @notifications %>
+                </div>
+                <h3 class="col-xs-10 youkoso">
+                <% if user_signed_in? %>
+                ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user),class: "current_username" %>さん
                 <% else %>
-                  <i class="far fa-bell false" ></i>
-                  <%#= render 'users/notifications/index' %>
+                ようこそ <span class="guest">ゲスト</span>さん
                 <% end %>
-              <% end %>
+                </h3>
+              </div>
             </div>
           </div>
 
-          <div id="notifications" >
-            <%= render "users/notifications/index", notifications: @notifications %>
-          </div>
+
 
           </div>
           <div class="col-xs-4 headerNavBox">
@@ -69,13 +65,15 @@
                       <%= submit_tag '検索', class: "btn btn-primary" %>
                     <% end %>
                   </span>
+                  <div>
+                    <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
+                  </div>
             <% else %>
+              <div class="logout_items_path">
+                <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
+              </div>
             <% end %>
             </div>
-            <div>
-              <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
-            </div>
-
           </div>
 
 
@@ -96,13 +94,9 @@
             </nav>
 
             <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
-              <%#<%= link_to "商品一覧", admins_items_path, class: "col-xs-2 headerNavBtn admin_header" %>
-              <%#<%= link_to "会員一覧", admins_users_path, class: "col-xs-3 headerNavBtn admin_header" %>
-              <%#<%= link_to "ジャンル管理", admins_genres_path, class: "col-xs-3 headerNavBtn admin_header" %>
               <%= link_to "", destroy_admin_session_path, method: :delete, class: "col-xs-1 headerNavBtn admin_header glyphicon glyphicon-log-out" %>
 
             <% else %>
-              <%#<%= link_to "ながのCAKEとは", home_about_path, class: "col-xs-4 headerNavBtn" %>
               <%= link_to "新規会員登録", new_user_registration_path, class: "col-xs-4 headerNavBtn" %>
               <%= link_to "ログイン", new_user_session_path, class: "col-xs-4 headerNavBtn" %>
             <% end %>
@@ -141,31 +135,6 @@
   </footer>
 
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      var options = {};
-      var instances = M.Sidenav.init(elems, options);
-    });
-
-   $(function(){
-      $('.sidenav').sidenav();
-    });
-  </script>
-
-  <script>
-
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
-      var options = {};
-      var instances = M.Modal.init(elems, options);
-    });
-
-    // Or with jQuery
-
-    $(document).ready(function(){
-      $('.modal').modal();
-    });
-  </script>
+  
    </body>
 </html>

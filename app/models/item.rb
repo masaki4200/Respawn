@@ -11,6 +11,7 @@ class Item < ApplicationRecord
 
 	# いいね機能
     has_many :favorites, dependent: :destroy
+
     # いいね判別メソッド
     def favorited_by?(user)
       favorites.where(user_id: user.id).exists?
@@ -29,10 +30,10 @@ class Item < ApplicationRecord
 			# 自分自身のいいねの場合は通知済みにする
 		      if notification.visitor_id == notification.visited_id
 		        notification.checked = true
-			end
-			notification.save if notification.valid?
-		end
-	end
+    			end
+    			notification.save if notification.valid?
+    		end
+    	end
 
 	# コメント通知メソッド
 	  def create_notification_comment!(current_user, comment_id)

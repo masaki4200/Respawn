@@ -6,5 +6,5 @@ class ItemComment < ApplicationRecord
     validates :comment, presence: true
 
     #  通知機能
-    has_many :notifications, dependent: :destroy
+    has_many :notifications
 end

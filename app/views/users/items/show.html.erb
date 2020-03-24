@@ -25,7 +25,9 @@
             </div>
 
             <div id="item_favorite" class="col-xs-3" >
+              <% if user_signed_in? %>
               <%= render 'item_favorite', item: @item %>
+              <% end %>
             </div>
           </div>
           <div>

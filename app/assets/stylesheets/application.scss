@@ -26,24 +26,45 @@ html{
 }
 
 
+/*ヘッダー===============================================================================================*/
 
 /*ヘッダーの色*/
 .container-head {
-  background-color: #6f5436; 
-  height: 200px;
+  background-color: #6f5436;
+  height: 180px;
 }
 /*メインのバックカラー*/
 .main-back-color {
   background-color: #eedcb3;
 }
-
+/*リンクの色*/
 .head-all {
   a {
     color : #FFF;
     text-decoration:none;
   }
-
 }
+/*通知ベルの色*/
+.fa-bell {
+    animation: blinkAnime 1s infinite alternate;
+}
+@keyframes blinkAnime{
+   0% { color: #7f7f7f }
+ 100% { color: rgba(255, 255, 26, 0.72) }
+}
+
+/*ようこその色*/
+.youkoso {
+  color: #eedcb3;
+}
+
+
+.logout_items_path {
+  
+}
+
+
+/*=======================================================================================================*/
 
 /*スライドショー*/
 .single { max-width: 600px; margin: 0 auto 50px;}
@@ -99,13 +120,13 @@ li {
   right: 20px;
 }
 
- 
+
 
 #pageTop i {
   padding-top: 6px
 }
 
- 
+
 
 #pageTop a {
   display: block;
@@ -121,7 +142,7 @@ li {
   text-align: center;
 }
 
- 
+
 
 #pageTop a:hover {
   text-decoration: none;

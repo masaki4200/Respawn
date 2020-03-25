@@ -13,7 +13,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     # binding.pry
-    current_user.default_image = "event_easter_#{rand(7)}.png"
+    current_user.default_image = "event_easter_#{rand(6)}.png"
     color_hash = {
       0 => '#ffd6ff',
       1 => '#d6d6ff',

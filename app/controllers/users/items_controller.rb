@@ -28,8 +28,8 @@ class Users::ItemsController < ApplicationController
 
 
   	@item = Item.find(params[:id])
-    @item_comment = ItemComment.new
-    @item_comments = @item.item_comments
+    @comment = Comment.new
+    @comments = @item.comments
   end
 
   def edit

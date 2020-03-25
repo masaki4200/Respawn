@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   end
     resources :items do
       resource :favorites, only: [:create, :destroy]
-      resource :item_comments, only: [:create, :destroy]
+      resource :comments, only: [:create, :destroy]
     end
   end
 

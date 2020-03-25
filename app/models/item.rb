@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
+    validates :title, presence: true
+  validates :description, presence: true
+  validates :description, length: {maximum: 200}
+
+
+
 	 attachment :item_image
 	belongs_to :user
 	belongs_to :category
@@ -7,7 +13,7 @@ class Item < ApplicationRecord
 	has_many :notifications, dependent: :destroy
 
 	# コメント機能
-	has_many :item_comments, dependent: :destroy
+	has_many :comments, dependent: :destroy
 
 	# いいね機能
     has_many :favorites, dependent: :destroy

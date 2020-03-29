@@ -4,7 +4,7 @@ class Users::ItemsController < ApplicationController
 
 
   	if params[:category_id] != nil
-    @items = Item.where(category_id: params[:category_id]).page(params[:page])
+    @items = Item.where(category_id: params[:category_id]).page(params[:page]).per(16)
     @items_count = @items.count
     @categories = Category.where(category_status: true)
     @category = Category.find(params[:category_id])
@@ -29,7 +29,7 @@ class Users::ItemsController < ApplicationController
 
   	@item = Item.find(params[:id])
     @comment = Comment.new
-    @comments = @item.comments
+    @comments = @item.comments.page(params[:page])
   end
 
   def edit

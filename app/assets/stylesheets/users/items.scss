@@ -52,10 +52,16 @@ border: 2px solid #006DD9;/* ラベルの境界線を実線で指定する */
 border-radius: 5px; /* 角丸を指定する */
 }
 
+/*アイテムの影*/
+.item-show {
+  border:5px solid #AAAAAA; /* 境界線を実線で太めに指定する */
+}
 
+/*いいね*/
 .fa-heart {
   font-size: 30px;
 }
+
 
 .item-index {
   height: 100%;

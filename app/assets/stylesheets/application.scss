@@ -21,8 +21,12 @@
     margin : 0;
     padding : 0;
  }
-html{
+html {
   width: 100%;
+}
+
+body {
+  
 }
 
 
@@ -42,10 +46,12 @@ html{
   a {
     color : #FFF;
     text-decoration:none;
+    margin-top: 30px;
   }
 }
 /*通知ベルの色*/
 .fa-bell {
+  font-size: 25px;
     animation: blinkAnime 1s infinite alternate;
 }
 @keyframes blinkAnime{
@@ -64,7 +70,7 @@ html{
 }
 
 .search_btn {
-  background-color: #54e041;
+  background-color: #fff;
   width: 80px;
   height: 25px;
 }
@@ -77,10 +83,38 @@ html{
   margin-top: 20px;
 }
 
+.all-btn-box {
+  margin-top: 30px;
+}
+
+
+.all-btn {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #edd59c;     /* 背景色     */
+  color         : #6f5436;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 0.9;         /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 2px 2px #666666;  /* 影の設定 */
+}
+.all-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 1;           /* カーソル時透明度 */
+}
+
+
+
+
+
 /*=======================================================================================================*/
 
 /*スライドショー*/
-.single { max-width: 600px; margin: 0 auto 50px;}
+.single { max-width: 80%; margin: 0 auto;}
 .single img{ width: 100%;}
 
 
@@ -126,7 +160,7 @@ li {
 
 
 
-/*ページトップへ戻るボタン*/
+/*ページトップへ戻るボタン====================================*/
 #pageTop {
   position: fixed;
   bottom: 20px;
@@ -161,6 +195,32 @@ li {
   text-decoration: none;
   opacity: 0.7;
 }
+
+/*=================================================================*/
+
+
+/*サインアップ画面====================================================*/
+
+
+.input_form_sign {
+  position: relative;
+  float: left;
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid #B0BEC5 ;
+  background-color: transparent;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.5s;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;  
+opacity: 0;
+display: none;
+}
+/*===========================================================*/
+
+
 
 
 /*フッターカラー*/

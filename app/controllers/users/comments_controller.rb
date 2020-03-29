@@ -9,7 +9,7 @@ class Users::CommentsController < ApplicationController
         # 通知
          @item.create_notification_comment!(current_user, @comment.id)
       end
-       @comments = @item.comments.reverse
+       @comments = @item.comments.order("created_at DESC")
 	end
 
 	def destroy
@@ -17,12 +17,10 @@ class Users::CommentsController < ApplicationController
     @item = @comment.item
     if @comment.user == current_user
       @comment.destroy
-      @comments = @item.comments.reverse
+      @comments = @item.comments.order("created_at DESC")
   	else
-  		# redirectするのは変だから直す
   	 redirect_to request.referer
     end
-    @comments = @item.comments.reverse
 	end
 
 private

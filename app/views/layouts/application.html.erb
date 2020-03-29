@@ -21,7 +21,6 @@
 
 
   <body class="main-back-color">
-    <!-- 通知の定義 -->
 
     <div id="wrap">
   <header>
@@ -70,18 +69,16 @@
                   </span>
               </div>
 
-              <div class="col-xs-6">
-                  <div>
-                    <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
-                  </div>
+              <div class="col-xs-6 all-btn-box">
+                <div class="all-block">
+                  <%= link_to "投稿一覧へ", users_items_path, class: "button all-btn" %>
+                </div>
               </div>
-              <div class="col-xs-6">
-                  <div>
-                    <%= link_to "ユーザー一覧", users_users_path, class: "btn btn-primary" %>
-                  </div>
+              <div class="col-xs-6 all-btn-box">
+                <div>
+                  <%= link_to "会員一覧へ", users_users_path, class: "button all-btn" %>
+                </div>
               </div>
-
-
             <% else %>
               <div class="logout_items_path">
                 <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
@@ -103,7 +100,7 @@
               <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "glyphicon glyphicon-item items" %></li>
               <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
               <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items',data: {"turbolinks" => false} %></li>
+              <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %></li>
               </ul>
             </nav>
 
@@ -116,14 +113,7 @@
             <% end %>
           </div>
         </div>
-
-
-
-
-
-
         </div>
-
       </div>
     </div>
   </header>
@@ -134,8 +124,7 @@
       <%= yield %>
   </div>
   </div>
-
-      <p id="pageTop"><a href="#"><i class="fa fa-chevron-up"></i></a></p>
+      <%= image_tag 'UP2.png' , width: "60px", height: "auto",id:"pageTop" %>
       <% if user_signed_in? && request.fullpath.index("/admins/") == nil %>
     <footer>
       <div id="footer">
@@ -144,6 +133,9 @@
     </footer>
       <% elsif admin_signed_in? %>
       <% else %>
+      <div id="footer">
+        <div class="copyright">© 2020 Respawn</div>
+      </div>
 
       <% end %>
   </footer>

@@ -4,3 +4,73 @@
 
 
 
+.slider {
+	border:5px solid #AAAAAA;
+	background-color: #ffe5e5;
+}
+
+
+.respawn-top {
+	font-size: 60px;
+	text-align: center;
+
+}
+
+.top-text {
+	font-size: 20px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+
+.home-border {
+	border-color: #000;
+}
+
+
+.home-items-btn {
+ display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 12pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 12px 12px;   /* 余白       */
+  background    : #9eff9e;     /* 背景色     */
+  color         : #000;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 0.9;         /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 2px 2px #666666;  /* 影の設定 */
+}
+.home-items-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 1;           /* カーソル時透明度 */
+}
+
+.icon-box {
+	margin: 30px 0 50px 0;
+	text-align: center;
+}
+
+
+
+/*アバウトページ*/
+
+.about-movie {
+		border:5px solid #AAAAAA;
+	background-color: #ffe5e5;
+}
+
+
+.about-area {
+	background-color: #ffe5f2;
+	border-bottom: double;
+}
+
+.about-page {
+	background-color: #fff;
+}
+
+.how-to {
+	text-align: center;
+}

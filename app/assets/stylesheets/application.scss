@@ -21,14 +21,17 @@
     margin : 0;
     padding : 0;
  }
-html {
-  width: 100%;
-}
 
-body {
-  
+html, body{
+  margin: 0;  /* 余白の削除 */
+  padding: 0; /* 余白の削除 */
+  height: 100%; /* 縦の高さを100% */
+  width: 100%;  /* 横の幅を100% */
 }
-
+ 
+footer {
+  margin-top: auto;
+}
 
 /*ヘッダー===============================================================================================*/
 
@@ -72,7 +75,6 @@ body {
 .search_btn {
   background-color: #fff;
   width: 80px;
-  height: 25px;
 }
 
 .text_btn {
@@ -202,22 +204,6 @@ li {
 /*サインアップ画面====================================================*/
 
 
-.input_form_sign {
-  position: relative;
-  float: left;
-  width: 90%;
-  border: none;
-  border-bottom: 1px solid #B0BEC5 ;
-  background-color: transparent;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.5s;
-    height: 0px;
-    margin: 0px;
-    padding: 0px;  
-opacity: 0;
-display: none;
-}
 /*===========================================================*/
 
 

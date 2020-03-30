@@ -79,10 +79,6 @@
                   <%= link_to "会員一覧へ", users_users_path, class: "button all-btn" %>
                 </div>
               </div>
-            <% else %>
-              <div class="logout_items_path">
-                <%= link_to "投稿一覧", users_items_path, class: "btn btn-primary" %>
-              </div>
             <% end %>
             </div>
           </div>
@@ -108,8 +104,11 @@
               <%= link_to "", destroy_admin_session_path, method: :delete, class: "col-xs-1 headerNavBtn admin_header glyphicon glyphicon-log-out" %>
 
             <% else %>
-              <%= link_to "新規会員登録", new_user_registration_path, class: "col-xs-4 headerNavBtn" %>
-              <%= link_to "ログイン", new_user_session_path, class: "col-xs-4 headerNavBtn" %>
+            <ul>
+              <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
+              <li class="nav-list"><%= link_to "Signup", new_user_registration_path, class: "glyphicon glyphicon-item items" %></li>
+              <li class="nav-list"><%= link_to "Login", new_user_session_path, class: "glyphicon glyphicon-item items" %></li>
+            </ul>
             <% end %>
           </div>
         </div>
@@ -124,7 +123,7 @@
       <%= yield %>
   </div>
   </div>
-      <%= image_tag 'UP2.png' , width: "60px", height: "auto",id:"pageTop" %>
+      <%= image_tag 'UP3.png' , width: "60px", height: "auto",id:"pageTop" %>
       <% if user_signed_in? && request.fullpath.index("/admins/") == nil %>
     <footer>
       <div id="footer">

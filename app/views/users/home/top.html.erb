@@ -1,23 +1,50 @@
-<h1>Users::Home#top</h1>
-<p>Find me in app/views/users/home/top.html.erb</p>
-
-
-<div class ="container signup">
+<div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <div class="single slider">
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/1.jpg" class="slider"   alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/2.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/3.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/4.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/5.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/6.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/7.jpg" class="slider" alt=""></div>
-        <div><img src="https://www.jungleocean.com/demo/jquery-slick/images/8.jpg" class="slider" alt=""></div>
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="home-top-text">
+        <h1 class="respawn-top">Respawn</h1>
+        <hr class="home-border">
+        <div class="top-text">
+            ようこそRespawnへ！<br>
+            ありとあらゆる癒しの写真をみんなで共有しましょう！
+        </div>
+      </div>
+      <div class ="container signup">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="single slider">
+            <% @items.each do |item| %>
+              <div><%= attachment_image_tag item, :item_image,size: '640x400', format: 'jpeg', fallback: "no_image.jpg" %>
+                  <h4>Title【<%= item.title %>】</h4>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row icon-box">
+        <div class="col-xs-8 col-xs-offset-2">
+          <div class="col-xs-4">
+            <%= link_to users_items_path do %>
+              <%= image_tag 'Items.png', height: "80px", width: "auto"  ,class: "icon1" %>
+            <% end %>
+          </div>
+          <div class="col-xs-4">
+            <%= link_to new_user_registration_path do %>
+              <%= image_tag 'Signup.png', height: "80px", width: "auto" ,class: "icon1" %>
+            <% end %>
+          </div>
+          <div class="col-xs-4">
+            <%= link_to new_user_session_path do %>
+              <%= image_tag 'Login.png', height: "80px", width: "auto" ,class: "icon1" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 
 <script>
@@ -32,11 +59,4 @@ $(document).ready(function(){
  　});
  });
 </script>
-
-
-<%#= link_to '投稿一覧', users_items_path, class: 'glyphicon glyphicon-item items' %>
-
-
-
-<%#= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %>
 

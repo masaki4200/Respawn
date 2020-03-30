@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-7">
-      <div class="row">
+      <div class="row"> 
         <div class="col-xs-8">
-          <h2> <%= @item.user.name %> さんの投稿</h2>
+          <h2><%= link_to users_user_path(@item.user) do %>
+           <%= @item.user.name %> 
+           <% end %>さんの投稿</h2>
           <h2>Title:<%= @item.title %></h2>
         </div>
         <div class="col-xs-4">

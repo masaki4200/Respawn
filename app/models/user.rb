@@ -15,8 +15,6 @@ class User < ApplicationRecord
 
 
 
-
-
   # ====================自分がフォローしているユーザーとの関連 ===================================
   #フォローする側のUserから見て、フォローされる側のUserを(中間テーブルを介して)集める。なので親はfollowing_id(フォローする側)
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
@@ -40,6 +38,8 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   # ==========================================================================================================
 
+  before_create :set_default_image
+
 
   def followed_by?(user)
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
@@ -58,4 +58,21 @@ class User < ApplicationRecord
     notification.save if notification.valid?
     end
   end
+
+  def set_default_image
+    self.default_image = "event_easter_#{rand(5)}.png"
+    color_hash = {
+      0 => '#ffd6ff',
+      1 => '#d6d6ff',
+      2 => '#d6ffff',
+      3 => '#d6ffd6',
+      4 => '#ffffcc',
+      5 => '#00bfff',
+      6 => '#cd5c5c',
+      7 => '#ffd700',
+    }
+    self.default_backgroud_color = color_hash[rand(7)]
+  end
+
+
 end

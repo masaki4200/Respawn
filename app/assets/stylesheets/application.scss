@@ -15,6 +15,9 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "slick-theme";
+@import "slick";
+
 
 * {
     box-sizing: border-box;
@@ -28,11 +31,13 @@ html, body{
   height: 100%; /* 縦の高さを100% */
   width: 100%;  /* 横の幅を100% */
 }
- 
 footer {
   margin-top: auto;
 }
 
+.space {
+  height: 200px;
+}
 /*ヘッダー===============================================================================================*/
 
 /*ヘッダーの色*/
@@ -67,9 +72,13 @@ footer {
   color: #eedcb3;
 }
 
+.current_username {
+  color: #eb6d59;
+}
+
+
 
 .logout_items_path {
-  
 }
 
 .search_btn {

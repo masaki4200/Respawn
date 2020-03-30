@@ -15,7 +15,7 @@ class Users::ItemsController < ApplicationController
       @categories = Category.where(category_status: true)
       @category = Category.all
     else
-    @items = Item.all.page(params[:page])
+    @items = Item.all.page(params[:page]).page(params[:page]).per(16)
     @items_all = Item.all
     @items_count = @items_all.count
     @categories = Category.where(category_status: true)
@@ -26,7 +26,7 @@ class Users::ItemsController < ApplicationController
   def show
   	@item = Item.find(params[:id])
     @comment = Comment.new
-    @comments = @item.comments.page(params[:page])
+    @comments = @item.comments.page(params[:page]).per(10).order(created_at: :DESC)
   end
 
   def edit

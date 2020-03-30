@@ -1,5 +1,4 @@
 <div class="container">
-	
   <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
 	  <% if @user == current_user %>
@@ -17,7 +16,6 @@
   	  <% end %>
 	</div>
   </div>
-
   <div class="row">
   	<div class="col-xs-8 col-xs-offset-2">
   		<h1><%= @myUser.name %>さん</h1>
@@ -34,7 +32,6 @@
 					<th></th>
 				</tr>
 			</thead>
-
 			<tbody>
 				<tr>
 					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "no_image.jpg") %></td>

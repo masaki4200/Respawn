@@ -32,10 +32,9 @@
 					<th></th>
 				</tr>
 			</thead>
-
 			<tbody>
 				<tr>
-					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "no_image.jpg") %></td>
+					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: user.default_image) %></td>
 					<td><%= user.name%></td>
 					<td>フォロー数：<%= user.followings.count %></td>
 					<td>フォロワー数：<%= user.followers.count %></td>

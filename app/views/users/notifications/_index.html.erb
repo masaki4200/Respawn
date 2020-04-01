@@ -31,7 +31,6 @@
         <h4 class="modal-title">通知一覧</h4>
       </div>
       <div class="">
-      	<%# binding.pry %>
         <% if notifications.exists? %>
         <% notifications.each do |notification| %>
           <%= render "users/notifications/notification", notification: notification  %>

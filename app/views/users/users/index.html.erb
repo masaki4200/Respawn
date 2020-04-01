@@ -23,7 +23,7 @@
 				<tbody>
 					<% @users.each do |user| %>
 					<tr>
-						<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: "noimage2.png") %></td>
+						<td ><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: user.default_image) %></td>
 						<td><%= user.name%></td>
 						<td><%= user.items.count %>件</td>
 

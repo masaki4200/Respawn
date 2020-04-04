@@ -4,6 +4,7 @@ class Users::CommentsController < ApplicationController
         # @item_new = Item.new
         @comment = @item.comments.new(comment_params)
         @comment.user_id = current_user.id
+        @comment.score = Language.get_data(comment_params[:comment])
 
       if @comment.save
         # 通知

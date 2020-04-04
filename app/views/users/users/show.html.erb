@@ -173,6 +173,10 @@
 		    </div>
 		      <%= paginate @items, class: "pagination" %>
 		  </div>
+		  <% if user_signed_in? %>
+  		  <% else %>
+    		<div class="space"></div>
+  		  <% end %>
 		</div>
 	  </div>
     </div>

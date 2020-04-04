@@ -19,9 +19,13 @@
       </div>
 	  </div>
   </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 how-to">
+  <div class="row how-to">
+    <div class="col-xs-6 col-xs-offset-3 ">
       <h1>How To Use</h1>
     </div>
   </div>
+  <% if user_signed_in? %>
+  <% else %>
+    <div class="space"></div>
+  <% end %>
 </div>

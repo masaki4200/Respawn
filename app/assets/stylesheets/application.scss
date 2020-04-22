@@ -35,9 +35,15 @@ footer {
   margin-top: auto;
 }
 
-.space {
-  height: 250px;
+.container {
+  width: 100%;
 }
+
+.space {
+   margin:  50px 0 100px 0;
+}
+
+
 /*ヘッダー===============================================================================================*/
 
 /*ヘッダーの色*/
@@ -76,6 +82,10 @@ footer {
   color: #eb6d59;
 }
 
+
+.search_cate {
+  background-color: #fff;
+}
 
 
 .logout_items_path {
@@ -129,9 +139,6 @@ footer {
 .single img{ width: 100%;}
 
 
-.container {
-	width: 100%;
-}
 
 
 ul {

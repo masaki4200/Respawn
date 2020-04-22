@@ -1,5 +1,5 @@
 
-<div class="container item-index">
+<div class="container item-index space">
   <div class="row">
   	<div class="col-xs-2">
   		<%= render 'genre_list', categories: @categories %>
@@ -30,7 +30,7 @@
 		        </div>
 		      <% end %>
 		    </div>
-		    <% if params[:place] && params[:place] == 'top' %>
+		    <% if params[:place] && params[:place] == 'top5' %>
 		    <% else %>
 		      <%= paginate @items, class: "pagination" %>
 		    <% end %>

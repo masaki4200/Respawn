@@ -9,7 +9,7 @@ class Users::ItemsController < ApplicationController
     @categories = Category.where(category_status: true)
     @category = Category.find(params[:category_id])
 
-    elsif params[:place] && params[:place] == 'top'
+    elsif params[:place] && params[:place] == 'top5'
       @items = Item.joins(:favorites).group(:id).order('count(item_id) desc').limit(5)
       @items_count = 5
       @categories = Category.where(category_status: true)

@@ -15,17 +15,68 @@
         </div>
   		</div>
       <div class="col-xs-6">
-        <video class="about-movie" src="<%= asset_path 'victor_ciurus--5d_mark_iii_magic_lantern_14_bits_raw_video.mp4' %>"width="100%" autoplay muted loop playsinline></video>
+        <video class="about-movie" src="<%= asset_path 'about_movie.mp4' %>"width="100%" autoplay muted loop playsinline></video>
       </div>
 	  </div>
   </div>
-  <div class="row how-to">
-    <div class="col-xs-6 col-xs-offset-3 ">
-      <h1>How To Use</h1>
+
+  <div class="how-to-area">
+    <div class="row how-to-use">
+      <div class="col-xs-6 col-xs-offset-3">
+        <h1>How To Use</h1>
+      </div>
+    </div>
+    <div class="row how-to-list">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div class="row about-box1">
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about1.png', height: "100px", width: "auto"%></div>
+            <h2 class="about-text">- 画像の投稿・閲覧 -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about2.png', height: "100px", width: "auto"%></div>
+            <h2 class="about-text">- フォロー -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about3.png', height: "100px", width: "auto"%></div>
+            <h2 class="about-text">- コメント -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about4-1.png', height: "100px", width: "auto"%>
+              <span class="icon4"><%= image_tag 'about4-2.png', height: "100px", width: "auto"%></span>
+            </div>
+            <h2 class="about-text">- <span class="about-iine">いいね＆お気に入り一覧</span> -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about5.png', height: "100px", width: "auto"%></div>
+            <h2 class="about-text">- 通知 -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <div class="about-icon"><%= image_tag 'about6.png', height: "100px", width: "auto"%></div>
+            <h2 class="about-text">- 検索 -</h2>
+            <p class="about-text">誰でも気軽に画像の投稿・閲覧ができます<br>
+              お気に入りの画像をみんなで共有しましょう！
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <% if user_signed_in? %>
-  <% else %>
-    <div class="space"></div>
-  <% end %>
 </div>

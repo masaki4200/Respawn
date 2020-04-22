@@ -29,7 +29,7 @@ Rails 5.2.4.1
 - スライドショー
 - ランダム
 - お気に入り一覧
-- Google Natural Language API
+- Google Natural Language API(ネガティブ判定なコメントを非表示に)
 
 
 #　使い方

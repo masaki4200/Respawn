@@ -20,13 +20,11 @@
         </div>
 
         <div class="col-xs-12">
-         <%= attachment_image_tag @item, :item_image, fallback: "noimage2.png", size: '640x400',class: "item-show"  %>
+         <%= attachment_image_tag @item, :item_image, fallback: "noimage2.png", size: '680x425',class: "item-show"  %>
         </div>
-        <div class="col-xs-12">
-          <div class="row">
+        <div class="row">
             <div class="col-xs-9">
             </div>
-
             <div id="item_favorite" class="col-xs-3" >
               <% if user_signed_in? %>
               <%= render 'item_favorite', item: @item %>
@@ -34,7 +32,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="item-detil col-xs-8">
+            <div class="item-detil col-xs-10">
               <div>
                 <span>カテゴリー：<%= @item.category.name %></span>
                 <span><%#= @item.category.genre_status %></span>
@@ -46,8 +44,6 @@
             </div>
           </div>
         </div>
-
-      </div>
     </div> <!-- col-xs-6 end -->
     <div class="col-xs-3">
       <div>

@@ -1,6 +1,6 @@
 <p> コメント数：<%= comments.count %>件</p>
 <% comments.each do |comment| %>
-  
+  <% if comment&.score >= 0.0 %>
         <div class="comment-body bb">
             <div class="comment-avatar">
             </div>
@@ -39,5 +39,6 @@
                 </div>
             </div>
         </div>
+  <% end %>
 <% end %>
 <%= paginate comments, class: "pagination" %>

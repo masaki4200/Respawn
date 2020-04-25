@@ -1,0 +1,63 @@
+<div class="container admin-space2">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-7">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2><%= link_to users_user_path(@item.user) do %>
+                <%= @item.user.name %>
+              <% end %>さんの投稿</h2>
+          <h2>Title:<%= @item.title %></h2>
+        </div>
+        <div class="col-xs-4">
+        </div>
+
+        <div class="col-xs-12">
+         <%= attachment_image_tag @item, :item_image, fallback: "noimage2.png", size: '680x425',class: "item-show"  %>
+        </div>
+          <div class="row">
+            <div class="item-detil col-xs-10">
+              <div>
+                <span>カテゴリー：<%= @item.category.name %></span>
+                <span><%#= @item.category.genre_status %></span>
+              </div>
+              <div>
+                <p>【概 要】</p>
+                <p><%= @item.description %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#item-delete">この投稿を削除する</button>
+		<div class="modal fade" id="item-delete" tabindex="-1">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				  <h4 class="modal-title">本当にこの投稿を削除しますか？</h4>
+				  <h5>※投稿の削除は製作者のみ可能とします</h5>
+			  </div>
+			  <div class="modal-footer admin-user-delete">
+			    <%= link_to "削", admins_item_path(@item), method: :delete, class: "delete-btn" %>
+			    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+			    <%= link_to "削除", admins_items_path, class: "btn btn-danger" %>
+			  </div>
+		    </div>
+		  </div>
+		</div>
+    </div> <!-- col-xs-6 end -->
+    <div class="col-xs-3">
+      <div id="comment">
+        <%= render 'admins/items/comment_index', comments: @comments %>
+      </div>
+    </div>
+  </div> <!-- row end -->
+</div> <!-- container end -->
+
+
+
+
+
+
+
+

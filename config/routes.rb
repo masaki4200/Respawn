@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
 
-
+  namespace :admins do
+    get 'items/index'
+    get 'items/show'
+  end
   get '/search' => 'search#search'
   # namespace :users do
   #   get 'items/index'
@@ -55,12 +58,13 @@ devise_for :admins, controllers: {
 
 # 機能
   namespace :admins do
-    get 'categories/index'
-    get 'categories/edit'
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
+    root 'home#top'
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :items, only: [:index, :show, :destroy] do
+      resource :comments, only: [:destroy]
+    end
   end
+
 
 
 

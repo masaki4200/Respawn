@@ -1,0 +1,31 @@
+<p> コメント数：<%= comments.count %>件</p>
+<% comments.each do |comment| %>
+  <% if comment&.score <= 0.0 %>
+        <div class="comment-body bb">
+            <div class="comment-avatar">
+            </div>
+            <div class="comment-text">
+                <div class="comment-author clearfix">
+                    <%= link_to admins_user_path(comment.user) do %>
+                        <p class ="comment-user"><%= comment.user.name %>さん</p>
+
+                        <div class="user-defo-image-box" style="background-color: <%= comment.user.default_backgroud_color %>;"><%= attachment_image_tag comment.user,  :user_image, height: "50px", width: "50px",fallback: comment.user.default_image %></div>
+                    <% end %>
+                      <span class="comment-date" style="vertical-align: top;"><%= comment.created_at.strftime('%Y/%m/%d') %></span>
+                </div>
+                <div class="comment-entry">コメント：<%= comment.comment %>
+                </div>
+                <!-- コメント認証機能の数値 -->
+                <span class="comment-score">
+                        <span class="comment-score">判定値：<%= comment&.score %></span>
+                      </span>
+                <!--  -------------- -->
+                <div>
+                	<%= link_to "削除する", admins_item_comments_path(comment.id), method: :delete, class: "com", remote: true %>
+                    <hr class="bottom-line">
+                </div>
+            </div>
+        </div>
+  <% end %>
+<% end %>
+<%= paginate comments, class: "pagination" %>

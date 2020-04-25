@@ -30,16 +30,22 @@
             </div>
             <div class="">
               <div class="row">
-                <div id="notifications" class="col-xs-2">
-                  <%= render "users/notifications/index", notifications: @notifications %>
-                </div>
-                <h3 class="col-xs-10 youkoso">
-                <% if user_signed_in? %>
-                ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user),class: "current_username" %>さん
+                <% if user_signed_in? && !request.fullpath.include?("admins")%>
+                  <div id="notifications" class="col-xs-2">
+                    <%= render "users/notifications/index", notifications: @notifications %>
+                  </div>
+                  <h3 class="col-xs-10 youkoso current_username">
+                    ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user) %>さん
+                  </h3>
+                <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+                  <h3 class="col-xs-10 youkoso header-admin-name">
+                    ようこそ<%= link_to "管理人",admins_root_path %>さん
+                  </h3>
                 <% else %>
-                ようこそ <span class="guest">ゲスト</span>さん
+                  <h3 class="col-xs-10 youkoso">
+                   ようこそ <span class="guest">ゲスト</span>さん
+                  </h3>
                 <% end %>
-                </h3>
               </div>
             </div>
           </div>
@@ -90,8 +96,9 @@
             </nav>
 
             <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
-              <%= link_to "", destroy_admin_session_path, method: :delete, class: "col-xs-1 headerNavBtn admin_header glyphicon glyphicon-log-out" %>
-
+            <ul>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: " headerNavBtn admin-logout glyphicon glyphicon-log-out" %></li>
+            </ul>
             <% else %>
             <ul>
               <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
@@ -113,26 +120,29 @@
   </div>
   </div>
       <%= image_tag 'UP3.png' , width: "60px", height: "auto",id:"pageTop" %>
-      <% if user_signed_in? && request.fullpath.index("/admins/") == nil %>
 <!--       <div class="space">
       </div> -->
 
     <footer>
-      <div id="footer">
-        <div class="copyright">© 2020 Respawn</div>
+      <div class="footer">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+          <div id="footer">
+            <div class="copyright">© 2020 Respawn</div>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <% if admin_signed_in? && request.fullpath.include?("admins") %>
+            <div class="admin-log-btn">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: " headerNavBtn glyphicon glyphicon-log-out" %>
+            </div>
+          <% else %>
+            <div class="admin-log-btn"><%= link_to "管理人の部屋", new_admin_session_path, class: "fas fa-door-closed" %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </footer>
-      <% elsif admin_signed_in? %>
-      <% else %>
-      <div id="footer">
-        <div class="copyright">© 2020 Respawn</div>
-      </div>
-
-      <% end %>
-
-  </footer>
-
-
-  
-   </body>
+  </body>
 </html>

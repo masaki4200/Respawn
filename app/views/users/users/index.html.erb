@@ -4,7 +4,7 @@
 <div class="container space space2">
   <div class="row">
 	<div class="col-xs-10 col-xs-offset-1">
-	  <h1>Users</h1>
+	  <h1 class="user-all-title">会員一覧ページ</h1>
 	  <table class="table">
 		<thead>
 		  <tr>
@@ -34,7 +34,7 @@
 				  <% end %>
 				<% end %>
 			  </td>
-			  <td><%= link_to "Show", users_user_path(user.id) %></td>
+			  <td><%= link_to "詳細", users_user_path(user.id), class: "btn btn-info" %></td>
 			</tr>
 		  <% end %>
 		</tbody>

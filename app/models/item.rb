@@ -17,8 +17,9 @@ class Item < ApplicationRecord
 
 	# いいね機能
   has_many :favorites, dependent: :destroy
+  
   # 画像認証
-  has_many :tags, dependent: :destroy
+  # has_many :tags, dependent: :destroy
 
     # いいね判別メソッド
     def favorited_by?(user)

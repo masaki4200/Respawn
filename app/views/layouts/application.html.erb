@@ -54,7 +54,6 @@
             <div>
             <% if user_signed_in? && !request.fullpath.include?("admins") %>
               <div class="col-xs-12 search_box">
-
                   <span class="search-form">
                     <%= form_tag(search_path, method: :get) do %>
                       <%= text_field_tag 'search[content]' %>
@@ -66,15 +65,12 @@
                     <% end %>
                   </span>
               </div>
-
-              <div class="col-xs-6 all-btn-box">
-                <div class="all-block">
-                  <%= link_to "投稿一覧へ", users_items_path, class: "button all-btn" %>
-                </div>
-              </div>
-              <div class="col-xs-6 all-btn-box">
-                <div>
-                  <%= link_to "会員一覧へ", users_users_path, class: "button all-btn" %>
+              <div class="col-xs-12 all-btn-box">
+                <div class="all-block head-all">
+                  <ul>
+                    <li><%= link_to "投稿一覧へ", users_items_path, class: "headerNavBtn admin-navlist fas fa-images" %></li>
+                    <li><%= link_to "会員一覧へ", users_users_path, class: "headerNavBtn admin-navlist fas fa-users" %></li>
+                  </ul>
                 </div>
               </div>
             <% end %>
@@ -82,7 +78,6 @@
           </div>
           <div class="col-xs-5 head-all">
             <% if user_signed_in? && !request.fullpath.include?("admins") %>
-
             <nav>
               <ul>
               <li>
@@ -97,7 +92,8 @@
 
             <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
             <ul>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: " headerNavBtn admin-logout glyphicon glyphicon-log-out" %></li>
+              <li><%= link_to "会員一覧へ", admins_users_path, class: " headerNavBtn admin-navlist fas fa-users"%></li>
+              <li><%= link_to "投稿一覧へ", admins_items_path, class: " headerNavBtn admin-navlist fas fa-images" %></li>
             </ul>
             <% else %>
             <ul>

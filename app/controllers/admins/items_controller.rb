@@ -1,6 +1,11 @@
 class Admins::ItemsController < ApplicationController
   def index
-  	@items = Item.all
+    if params[:today] && params[:today] == 'today'
+       @items = Item.where(created_at: Date.current.all_day)
+       .order("created_at")
+    else
+  	   @items = Item.all
+    end
   end
 
   def show

@@ -1,6 +1,11 @@
 class Admins::UsersController < ApplicationController
   def index
+    if params[:today] && params[:today] == 'today'
+       @users = User.where(created_at: Date.current.all_day)
+       .order("created_at")
+    else
   	@users = User.all
+  end
   end
 
   def show

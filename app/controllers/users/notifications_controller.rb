@@ -5,6 +5,7 @@ class Users::NotificationsController < ApplicationController
 	def index
     	@notifications = current_user.passive_notifications.page(params[:page]).per(15)
     	@notifications.each do |notification|
+        end
     end
 
 
@@ -16,5 +17,4 @@ class Users::NotificationsController < ApplicationController
     end
 
 
-  end
 end

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   root 'users/home#top'
   get "home/about" => "users/home#about"
   namespace :users do
-    resources :notifications, only: :index
+    resources :notifications, only: [:index, :destroy]
     resources :users do
       get 'favorites' => 'users#favorites', as:'favorites'
       resource :relationships, only: [:create, :destroy]

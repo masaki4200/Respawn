@@ -3,7 +3,6 @@
 
 <div class="col-xs-8 col-xs-offset-2">
   <div class="form-inline">
-    <span>
       <%= link_to users_user_path(visitor) do %>
         <strong><%= visitor.name %></strong>
       <% end %>
@@ -29,9 +28,11 @@
           にコメントしました
         <% end %>
       <% end %> <!-- when end -->
-      <div class="small text-muted text-right">
+      <span class="small text-muted text-right">
         <%= time_ago_in_words (notification.created_at) %>前
-      </div>
-    </span>
+      </span>
   </div>
+</div>
+<div class="col-xs-2 form-inline noti-btn">
+  <%= link_to "削除", users_notification_path(notification), method: :delete, class: "noti-btn btn btn-danger" %>
 </div>

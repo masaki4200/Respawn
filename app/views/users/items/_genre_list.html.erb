@@ -3,23 +3,23 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="table_genre ">
-            <span>ジャンル検索</span>
+          <th class="table_category">
+            <span>カテゴリー検索</span>
           </th>
         </tr>
       </thead>
       <tbody>
           <tr>
-            <td style="border-style: none;"><%= link_to "すべて", users_items_path, class: "genre_text"; %></td>
+            <td style="border-style: none;">・<%= link_to "すべて", users_items_path, class: "genre_text"; %></td>
           </tr>
           <tr>
-            <td style="border-style: none;"><%= link_to "トップ５", users_items_path(:place => "top5"), class: "genre_text"; %></td>
+            <td style="border-style: none;">・<%= link_to "トップ５", users_items_path(:place => "top5"), class: "genre_text"; %></td>
           </tr>
           <tr>
             <% categories.each do |category| %>
               <td style="border-style: none;">
                 <%= link_to users_items_path(category_id: category.id) do %>
-                  <span class="genre_text" ><%= category.name %></span>
+                  <span class="genre_text" >・<%= category.name %></span>
                 <% end %>
             </td>
           </tr>

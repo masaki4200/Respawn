@@ -1,37 +1,29 @@
-<% if @model == 'user' %>
-
-  <div class="col-xs-9">
-      <h2>Users search for '<%= @content %>'</h2>
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <% if @model == 'user' %>
       <!--users一覧 -->
+      <h2>Users search for '<%= @content %>'</h2>
       <table class="table">
         <thead>
           <tr>
-            <th>image</th>
+            <th>icon</th>
             <th>name</th>
             <th colspan="3"></th>
           </tr>
         </thead>
-
         <tbody>
           <% @datas.each do |f| %>
-
-          <tr>
-            <td><%= attachment_image_tag(f, :user_image, size: "50x50", fallback: "no_image.jpg") %></td>
-            <td><%= f.name %></td>
-
-            <td><%= link_to "Show", users_user_path(f.id) %></td>
-          </tr>
+            <tr>
+              <td><%= attachment_image_tag(f, :user_image, size: "50x50", fallback: f.default_image) %></td>
+              <td><%= f.name %></td>
+              <td><%= link_to "詳細へ", users_user_path(f.id) %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>
-    </div>
-
-
- <% else %>
-
-<div class="col-xs-9">
-      <h2>Items search for '<%= @content %>'</h2>
-      <!--books一覧 -->
+    <% else %>
+      <!--items一覧 -->
+      <h2>Images search for '<%= @content %>'</h2>
       <table class="table">
         <thead>
           <tr>
@@ -40,21 +32,18 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-
         <tbody>
           <% @datas.each do |f| %>
-          <tr>
-            <td><%= f.title %></td>
-            <td><%= f.description %></td>
-
-            <td><%= link_to "アイテム詳細", users_item_path(f.id) %></td>
-          </tr>
-              <% end %>
+            <tr>
+              <td><%= f.title %></td>
+              <td><%= f.description %></td>
+              <td><%= link_to "詳細へ", users_item_path(f.id) %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
-    </div>
-
-
-
-
-<% end %>
+    <% end %>
+  </div>
+  <div class="space"></div>
+  <div class="space3"></div>
+</div>

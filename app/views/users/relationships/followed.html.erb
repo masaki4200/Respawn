@@ -1,55 +1,54 @@
 <div class="container space space2">
   <div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-	  <% if @user == current_user %>
-		<div>
-		  <h1><%= link_to users_user_path(current_user.id) do %>
-		  <i class="fas fa-chevron-left"></i></h1>
-		  <% end %>
+		<div class="col-xs-10 col-xs-offset-1">
+		  <% if @user == current_user %>
+				<div>
+				  <h1><%= link_to users_user_path(current_user.id) do %>
+				  	<i class="fas fa-chevron-left"></i></h1>
+				  <% end %>
+				</div>
+	  	<% else %>
+	  		<div>
+			  	<h1><%= link_to users_user_path(@myUser.id) do %>
+			  		<i class="fas fa-chevron-left"></i></h1>
+			  	<% end %>
+				</div>
+	  	<% end %>
 		</div>
-  	  <% else %>
-  		<div>
-		  <h1><%= link_to users_user_path(@myUser.id) do %>
-		  <i class="fas fa-chevron-left"></i></h1>
-		  <% end %>
-		</div>
-  	  <% end %>
-	</div>
   </div>
   <div class="row">
   	<div class="col-xs-8 col-xs-offset-2">
   		<h1><%= @myUser.name %>さん</h1>
   		<h1 class="user-all-title">Followers</h1>
-
-		<% @users.each do|user| %>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>image</th>
-					<th>name</th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: user.default_image) %></td>
-					<td><%= user.name%></td>
-					<td>フォロー数：<%= user.followings.count %></td>
-					<td>フォロワー数：<%= user.followers.count %></td>
-					<td>
-						<% if user.followed_by?(current_user) %>
-				            <p><%=link_to "フォロー済み", users_user_relationships_path(user.id), method: :delete, class: "btn btn-success"%></p>
+			<% @users.each do|user| %>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>icon</th>
+							<th>name</th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= attachment_image_tag(user, :user_image, size: "50x50", fallback: user.default_image) %></td>
+							<td><%= user.name%></td>
+							<td>フォロー数：<%= user.followings.count %></td>
+							<td>フォロワー数：<%= user.followers.count %></td>
+							<td>
+								<% if user.followed_by?(current_user) %>
+			            <p><%=link_to "フォロー済み", users_user_relationships_path(user.id), method: :delete, class: "btn btn-success"%></p>
 				        <% else %>
-				            <p><%=link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-default" %></p>
+		            	<p><%=link_to "フォローする", users_user_relationships_path(user.id), method: :post, class: "btn btn-default" %></p>
 				        <% end %>
-					</td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			<% end %>
+		</div>
   </div>
 </div>
 

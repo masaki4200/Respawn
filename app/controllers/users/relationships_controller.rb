@@ -1,8 +1,5 @@
 class Users::RelationshipsController < ApplicationController
-
-
   before_action :authenticate_user!
-
 
 	def create
     follow = current_user.active_relationships.build(follower_id: params[:user_id])
@@ -27,6 +24,4 @@ class Users::RelationshipsController < ApplicationController
     @myUser = User.find(params[:user_id])
     @users = @myUser.followers
   end
-
 end
- 

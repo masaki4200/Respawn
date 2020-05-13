@@ -4,79 +4,51 @@
 <div class="container space">
   <div class="row">
     <div class="col-xs-6 headerNavBox col-xs-offset-3">
-		<h2>【投稿画面】</h2>
-		<% if @item.errors.any? %>
-		  <div id="error_explanation" class="alert alert-danger">
-		    <ul>
-		      <% @item.errors.full_messages.each do |message| %>
-		        <li><%= message %></li>
-		      <% end %>
-		    </ul>
-		  </div>
-		<% end %>
-		<!-- <p>画像</p> -->
-		<%= form_for @item, url: users_items_path do |f| %>
-			<div class="field row">
-			  <div class ="work-image-pre center">
-				  <%= attachment_image_tag @item, :item_image, src: "", id:"item_image", size: "600x400", alt:"Image preview", class: "item_prev", fallback: "noimage2.png" %>
-				  <h4 class="post_image">画像のイメージ</h4>
+			<h2>【投稿画面】</h2>
+			<% if @item.errors.any? %>
+			  <div id="error_explanation" class="alert alert-danger">
+			    <ul>
+			      <% @item.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
 			  </div>
-			</div>
-
-			<!-- 投稿フォーム -->
-
-			<table>
-				<tbody>
-					<tr>
-						<td><h3><%= f.label "写真を選びましょう" %>:</h3></td>
-						<td><h4 class="file-field input-field">
-							<%= f.attachment_field :item_image, id:"post_img", class: "select_form" %>
-						</h4></td>
-					</tr>
-					<tr>
-						<td><h3><%= f.label "カテゴリーを選択" %>:</h3></td>
-						<td><h3><span class="select_form"><%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %></span></h3></td>
-					</tr>
-					<tr>
-						<td><h3><%= f.label :title  %>:</h3></td>
-						<td><h3><%= f.text_field :title, class: "select_form title_form" %></h3></td>
-					</tr>
-					<tr>
-						<td><h3><%= f.label "Comment", class: "hitokoto" %>:</h3></td>
-						<td><h3><%= f.text_area :description, class: "select_form" %></h3></td>
-					</tr>
-				</tbody>
-			</table>
-
-			
-			<div class="field row">
-				
-			</div>
-			<div class="field row">
-				<h3></h3>
-			</div>
-
-			<div class="field row">
-
-			</div>
-
-			<div class="field row">
-				<h3><span></span>
-				</h3>
-			</div>
-			<div class="field row">
-			</div>
-
-			<!-- ------------------- -->
-
-
-			<div class="actions row">
-				<%= f.submit "投稿する" ,class: "btn btn-primary col-xs-12" %>
-			</div>
-		<% end %>
-		<!-- <p>音・音楽</p> -->
-		<!-- <p>動画</p> -->
-
+			<% end %>
+			<!-- <p>画像</p> -->
+			<%= form_for @item, url: users_items_path do |f| %>
+				<div class="field row">
+				  <div class ="work-image-pre center">
+					  <%= attachment_image_tag @item, :item_image, src: "", id:"item_image", size: "600x400", alt:"Image preview", class: "item_prev", fallback: "noimage2.png" %>
+					  <h4 class="post_image">画像のイメージ</h4>
+				  </div>
+				</div>
+				<!-- 投稿フォーム -->
+				<table>
+					<tbody>
+						<tr>
+							<td><h3><%= f.label "写真を選びましょう" %>:</h3></td>
+							<td><h4 class="file-field input-field">
+								<%= f.attachment_field :item_image, id:"post_img", class: "select_form" %>
+							</h4></td>
+						</tr>
+						<tr>
+							<td><h3><%= f.label "カテゴリーを選択" %>:</h3></td>
+							<td><h3><span class="select_form"><%= f.select :category_id, Category.all.map { |category| [category.name, category.id] } %></span></h3></td>
+						</tr>
+						<tr>
+							<td><h3><%= f.label :title  %>:</h3></td>
+							<td><h3><%= f.text_field :title, class: "select_form title_form" %></h3></td>
+						</tr>
+						<tr>
+							<td><h3><%= f.label "Comment", class: "hitokoto" %>:</h3></td>
+							<td><h3><%= f.text_area :description, class: "select_form" %></h3></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="actions row">
+					<%= f.submit "投稿する" ,class: "btn btn-primary col-xs-12" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

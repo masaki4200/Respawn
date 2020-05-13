@@ -1,10 +1,10 @@
 class ItemComment < ApplicationRecord
 	belongs_to :user
-    belongs_to :item
+  belongs_to :item
 
-    # バリデーション
-    validates :comment, presence: true
+  # バリデーション
+  validates :comment, presence: true
 
-    #  通知機能
-    has_many :notifications
+  # 通知機能
+  has_many :notifications
 end

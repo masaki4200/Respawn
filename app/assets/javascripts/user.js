@@ -1,3 +1,4 @@
+// 画像プレビュー
 $(function(){
     function readURL(input) {
       if (input.files && input.files[0]) {
@@ -9,21 +10,12 @@ $(function(){
         reader.readAsDataURL(input.files[0]);
       }
     }
-
     $("#post_img").change(function(){
-      // $('#item_image').removeClass('hidden');
-      // $('.item_prev').remove();
       readURL(this);
     });
 })
 
-
-
-
-
-
 //■page topボタン
-
 $(function(){
 var topBtn=$('#pageTop');
 topBtn.hide();

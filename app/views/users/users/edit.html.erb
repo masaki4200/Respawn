@@ -1,54 +1,47 @@
 <%= javascript_include_tag "user.js" %>
 
-
 <div class="user-edit container space">
 	<div>
 		<h1><%= link_to users_user_path(@user) do %>
-		<i class="fas fa-chevron-left"></i></h1>
+			<i class="fas fa-chevron-left"></i></h1>
 		<% end %>
 	</div>
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-
 			<h1>User edit</h1>
 			<div class="row">
-				<div class="col-xs-6">
-					<%= form_for @user, url: users_user_path(@user) do |f| %>
-					<div>
-						<div class="user_image" style="background-color: <%= @user.default_backgroud_color %>;" >
-						<%= attachment_image_tag @user, :user_image, src: "", id:"item_image", height: "300px", width: "450px", alt:"Image preview", class: "item_prev", fallback: @user.default_image %>
+				<%= form_for @user, url: users_user_path(@user) do |f| %>
+					<div class="col-xs-6">
+						<div>
+							<div class="user_image" style="background-color: <%= @user.default_backgroud_color %>;" >
+							<%= attachment_image_tag @user, :user_image, src: "", id:"item_image", height: "300px", width: "450px", alt:"Image preview", class: "item_prev", fallback: @user.default_image %>
+							</div>
+						</div>
+						<div>
+							<%= f.attachment_field :user_image, id:"post_img" %>
 						</div>
 					</div>
-					<div>
-						<%= f.attachment_field :user_image, id:"post_img" %>
+					<div class="col-xs-6">
+						<div>
+							<p>アカウント名</p>
+							<%= f.text_field :name %>
+						</div>
+						<div>
+							<p>メールアドレス</p>
+							<%= f.text_field :email, :size=>"50" %>
+						</div>
+						<div>
+							<p>ひとこと</p>
+							<%= f.text_area :introduction, size: "50x4" %>
+						</div>
+						<div class="info">
+							<p><%= f.submit "更新", class: "btn btn-primary col-xs-3" %></p><br><br>
+						</div>
+						<div class="user-withdraw">
+							<p><%= link_to "退会する", users_withdraw_path, class: "btn btn-danger" %></p>
+						</div>
 					</div>
-				</div>
-				<div class="col-xs-6">
-					<div>
-						<p>アカウント名</p>
-						<%= f.text_field :name %>
-					</div>
-					<div>
-						<p>メールアドレス</p>
-						<%= f.text_field :email, :size=>"50" %>
-					</div>
-					<div>
-						<p>ひとこと</p>
-						<%= f.text_area :introduction, size: "50x4" %>
-					</div>
-
-					<div class="info">
-						<p><%= f.submit "更新", class: "btn btn-primary col-xs-3" %></p><br><br>
-					</div>
-
-					<div class="user-withdraw">
-						<p><%= link_to "退会する", users_withdraw_path, class: "btn btn-danger" %></p>
-					</div>
-					<% end %>
-
-				</div>
-
-
+				<% end %>
 			</div>
 		</div>
 	</div>

@@ -46,7 +46,9 @@ footer {
 .space2 {
   margin-bottom: 300px;
 }
-
+.space3 {
+  margin-bottom: 550px;
+}
 
 /*ヘッダー*/
 
@@ -102,11 +104,9 @@ footer {
   }
 }
 
-
 .search_cate {
   background-color: #fff;
 }
-
 
 .logout_items_path {
 }
@@ -128,7 +128,6 @@ footer {
   margin-top: 30px;
 }
 
-
 .all-btn {
   display       : inline-block;
   border-radius : 5%;          /* 角丸       */
@@ -147,7 +146,6 @@ footer {
   box-shadow    : none;        /* カーソル時の影消去 */
   opacity       : 1;           /* カーソル時透明度 */
 }
-
 
 ul {
   display: flex;
@@ -188,7 +186,6 @@ li {
 /*スライドショー*/
 .single { max-width: 80%; margin: 0 auto;}
 .single img{ width: 100%;}
-
 /*=======================================================*/
 
 
@@ -199,13 +196,9 @@ li {
   right: 20px;
 }
 
-
-
 #pageTop i {
   padding-top: 6px
 }
-
-
 
 #pageTop a {
   display: block;
@@ -221,13 +214,10 @@ li {
   text-align: center;
 }
 
-
-
 #pageTop a:hover {
   text-decoration: none;
   opacity: 0.7;
 }
-
 /*=======================================================*/
 
 
@@ -249,15 +239,12 @@ li {
 
 
 /*管理者ページ*/
-
-
 .header-admin-name {
   text-align: center;
   a {
     color: #54e041;
     text-decoration: none;
   }
-
 }
 
 .admin-log-btn {
@@ -280,7 +267,6 @@ li {
 .admin-navlist {
   font-size: 25px;
   margin-top: 25px;
-
 }
 
 .order_count {
@@ -293,20 +279,17 @@ li {
 .admin-space {
   width: 100%;
   background-color: #a7d28d;
-
   padding:  100px 100px 300px 100px;
 }
 
 .admin-space2 {
   background-color: #a7d28d;
-
   padding:  100px 30px 300px 30px;
 }
 
 .admin-users-title {
   margin-bottom: 50px;
 }
-
 
 .admin-user-delete {
   a {

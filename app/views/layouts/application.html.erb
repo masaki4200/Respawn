@@ -16,109 +16,94 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   </head>
   <body class="main-back-color">
-
     <div id="wrap">
-  <header>
-    <div class="header">
-      <div class="container-head">
-        <div>
-          <div class="col-xs-3 headerNavBox logo_bar">
-            <div class="logo">
-            <%= link_to root_path do %>
-            <%= image_tag 'logo11.png' , width: "300px", height: "auto" %>
-            <% end %>
-            </div>
-            <div class="">
-              <div class="row">
-                <% if user_signed_in? && !request.fullpath.include?("admins")%>
-                  <div id="notifications" class="col-xs-2">
-                    <%= render "users/notifications/index", notifications: @notifications %>
-                  </div>
-                  <h3 class="col-xs-10 youkoso current_username">
-                    ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user) %>さん
-                  </h3>
-                <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
-                  <h3 class="col-xs-10 youkoso header-admin-name">
-                    ようこそ<%= link_to "管理人",admins_root_path %>さん
-                  </h3>
-                <% else %>
-                  <h3 class="col-xs-10 youkoso">
-                   ようこそ <span class="guest">ゲスト</span>さん
-                  </h3>
+      <header>
+        <div class="header">
+          <div class="container-head">
+            <div class="col-xs-3 headerNavBox logo_bar">
+              <div class="logo">
+                <%= link_to root_path do %>
+                <%= image_tag 'logo11.png' , width: "300px", height: "auto" %>
                 <% end %>
               </div>
-            </div>
-          </div>
-          </div>
-          <div class="col-xs-4 headerNavBox">
-            <div>
-            <% if user_signed_in? && !request.fullpath.include?("admins") %>
-              <div class="col-xs-12 search_box">
-                  <span class="search-form">
-                    <%= form_tag(search_path, method: :get) do %>
-                      <%= text_field_tag 'search[content]' %>
-                      <%= select_tag 'search[model]', options_for_select({ "User" => "user", "Item" => "item" }),class: "search_cate" %>
-                      <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }),class: "search_cate" %>
-                      <span class="text_btn">
-                      <%= submit_tag '検索', class: "btn search_btn" %>
-                      </span>
-                    <% end %>
-                  </span>
-              </div>
-              <div class="col-xs-12 all-btn-box">
-                <div class="all-block head-all">
-                  <ul>
-                    <li><%= link_to "投稿一覧へ", users_items_path, class: "headerNavBtn admin-navlist fas fa-images" %></li>
-                    <li><%= link_to "会員一覧へ", users_users_path, class: "headerNavBtn admin-navlist fas fa-users" %></li>
-                  </ul>
+              <div class="">
+                <div class="row">
+                  <% if user_signed_in? && !request.fullpath.include?("admins")%>
+                    <div id="notifications" class="col-xs-2">
+                      <%= render "users/notifications/index", notifications: @notifications %>
+                    </div>
+                    <h3 class="col-xs-10 youkoso current_username">
+                      ようこそ<%= link_to "#{current_user.name}",users_user_path(current_user) %>さん
+                    </h3>
+                  <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+                    <h3 class="col-xs-10 youkoso header-admin-name">
+                      ようこそ<%= link_to "管理人",admins_root_path %>さん
+                    </h3>
+                  <% else %>
+                    <h3 class="col-xs-10 youkoso">
+                     ようこそ <span class="guest">ゲスト</span>さん
+                    </h3>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
+            </div>
+            <div class="col-xs-4 headerNavBox">
+              <% if user_signed_in? && !request.fullpath.include?("admins") %>
+                <div class="col-xs-12 search_box">
+                    <span class="search-form">
+                      <%= form_tag(search_path, method: :get) do %>
+                        <%= text_field_tag 'search[content]' %>
+                        <%= select_tag 'search[model]', options_for_select({ "User" => "user", "Image" => "image" }),class: "search_cate" %>
+                        <%= select_tag 'search[how]', options_for_select({ "完全一致" => "match", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partical"  }),class: "search_cate" %>
+                        <span class="text_btn">
+                        <%= submit_tag '検索', class: "btn search_btn" %>
+                        </span>
+                      <% end %>
+                    </span>
+                </div>
+                <div class="col-xs-12 all-btn-box">
+                  <div class="all-block head-all">
+                    <ul>
+                      <li><%= link_to "投稿一覧へ", users_items_path, class: "headerNavBtn admin-navlist fas fa-images" %></li>
+                      <li><%= link_to "会員一覧へ", users_users_path, class: "headerNavBtn admin-navlist fas fa-users" %></li>
+                    </ul>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-xs-5 head-all">
+              <% if user_signed_in? && !request.fullpath.include?("admins") %>
+                <nav>
+                  <ul>
+                  <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "glyphicon glyphicon-item items" %></li>
+                  <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
+                  <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-item items" %></li>
+                  <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %></li>
+                  </ul>
+                </nav>
+              <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+                <ul>
+                  <li><%= link_to "会員一覧へ", admins_users_path, class: " headerNavBtn admin-navlist fas fa-users"%></li>
+                  <li><%= link_to "投稿一覧へ", admins_items_path, class: " headerNavBtn admin-navlist fas fa-images" %></li>
+                </ul>
+              <% else %>
+                <ul>
+                  <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
+                  <li class="nav-list"><%= link_to "Signup", new_user_registration_path, class: "glyphicon glyphicon-item items" %></li>
+                  <li class="nav-list"><%= link_to "Login", new_user_session_path, class: "glyphicon glyphicon-item items" %></li>
+                </ul>
+              <% end %>
             </div>
           </div>
-          <div class="col-xs-5 head-all">
-            <% if user_signed_in? && !request.fullpath.include?("admins") %>
-            <nav>
-              <ul>
-              <li>
-
-              </li>
-              <li class="nav-list"><%= link_to "MyPage", users_user_path(current_user.id), class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to '投稿する', new_users_item_path, class: 'glyphicon glyphicon-item items' %></li>
-              </ul>
-            </nav>
-
-            <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
-            <ul>
-              <li><%= link_to "会員一覧へ", admins_users_path, class: " headerNavBtn admin-navlist fas fa-users"%></li>
-              <li><%= link_to "投稿一覧へ", admins_items_path, class: " headerNavBtn admin-navlist fas fa-images" %></li>
-            </ul>
-            <% else %>
-            <ul>
-              <li class="nav-list"><%= link_to "About", home_about_path, class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to "Signup", new_user_registration_path, class: "glyphicon glyphicon-item items" %></li>
-              <li class="nav-list"><%= link_to "Login", new_user_session_path, class: "glyphicon glyphicon-item items" %></li>
-            </ul>
-            <% end %>
-          </div>
         </div>
-        </div>
+      </header>
+    </div>
+    <div class="container">
+      <div class="row mainpage">
+          <%= yield %>
       </div>
     </div>
-  </header>
-  </div>
-  <div class="container">
-
-  <div class="row mainpage">
-      <%= yield %>
-  </div>
-  </div>
-      <%= image_tag 'UP3.png' , width: "60px", height: "auto",id:"pageTop" %>
-<!--       <div class="space">
-      </div> -->
-
+    <%= image_tag 'UP3.png' , width: "60px", height: "auto",id:"pageTop" %>
     <footer>
       <div class="footer">
         <div class="col-xs-4"></div>
@@ -137,7 +122,6 @@
             </div>
           <% end %>
         </div>
-
       </div>
     </footer>
   </body>

@@ -8,11 +8,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items, dependent: :destroy
-  attachment :user_image
-
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-
+  attachment :user_image
 
 
   # ====================自分がフォローしているユーザーとの関連 ===================================
@@ -23,7 +21,6 @@ class User < ApplicationRecord
   # ========================================================================================
 
 
-
   # ====================自分がフォローされるユーザーとの関連 ===================================
   #フォローされる側のUserから見て、フォローしてくる側のUserを(中間テーブルを介して)集める。なので親はfollower_id(フォローされる側)
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
@@ -32,14 +29,12 @@ class User < ApplicationRecord
   # =======================================================================================
 
 
-
   # ===============================通知機能====================================================================
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   # ==========================================================================================================
 
   before_create :set_default_image
-
 
   def followed_by?(user)
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
@@ -73,6 +68,4 @@ class User < ApplicationRecord
     }
     self.default_backgroud_color = color_hash[rand(7)]
   end
-
-
 end

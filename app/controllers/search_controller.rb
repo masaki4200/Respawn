@@ -11,7 +11,7 @@ class SearchController < ApplicationController
   def match(model, content)
     if model == 'user'
       User.where(name: content)
-    elsif model == 'item'
+    elsif model == 'image'
       Item.where(title: content)
     end
   end
@@ -20,7 +20,7 @@ class SearchController < ApplicationController
   	# 前方一致
     if model == 'user'
       User.where("name LIKE ?", "#{content}%")
-    elsif model == 'item'
+    elsif model == 'image'
       Item.where("title LIKE ?", "#{content}%")
     end
   end
@@ -29,7 +29,7 @@ class SearchController < ApplicationController
   	# 後方一致
     if model == 'user'
       User.where("name LIKE ?", "%#{content}")
-    elsif model == 'item'
+    elsif model == 'image'
       Item.where("title LIKE ?", "%#{content}")
     end
   end
@@ -38,7 +38,7 @@ class SearchController < ApplicationController
   	# 部分一致
     if model == 'user'
       User.where("name LIKE ?", "%#{content}%")
-    elsif model == 'item'
+    elsif model == 'image'
       Item.where("title LIKE ?", "%#{content}%")
     end
   end

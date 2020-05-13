@@ -1,4 +1,5 @@
 class Admins::ItemsController < ApplicationController
+
   def index
     if params[:today] && params[:today] == 'today'
        @items = Item.where(created_at: Date.current.all_day)
